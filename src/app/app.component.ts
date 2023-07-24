@@ -9,6 +9,7 @@ import { slideInAnimation } from './animations';
   animations: [ slideInAnimation ]
 })
 export class AppComponent {
+  title = 'Kammryn Dancy';
   constructor(private contexts: ChildrenOutletContexts) {}
 
   getRouteAnimationData() {
