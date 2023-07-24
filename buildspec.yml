@@ -5,7 +5,7 @@ env:
 phases:
   install:
     runtime-versions:
-      nodejs: 18.10
+      nodejs: 14.x
     commands:
       - echo install process started
       - if [ -z "${BRANCH}" ]; then echo "BRANCH not set" && exit 1 ; fi
