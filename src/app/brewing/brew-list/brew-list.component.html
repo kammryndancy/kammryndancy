@@ -1,0 +1,10 @@
+<h2>Brewing</h2>
+<ul class="brewing">
+  <li *ngFor="let brew of brews$ | async" [class.selected]="brew.id === selectedId">
+    <a [routerLink]="['/brew', brew.id]">
+      <span class="badge">{{ brew.id }}</span>{{ brew.name }}
+    </a>
+  </li>
+</ul>
+
+<button type="button" routerLink="/inventory">Go to sidekicks</button>
