@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - echo installing nodejs...
-      - curl -sL https://deb.nodesource.com/setup_14.x | bash -
+      - curl -sL https://deb.nodesource.com/setup_18.x | bash -
       - apt-get install -y nodejs  #aws code build use ubuntu environement
   pre_build:
     commands:
@@ -15,7 +15,7 @@ phases:
     commands:
       # - echo testing...
       # - echo building...
-      - ng build --prod
+      - ng build --configuration production --aot
 artifacts:
   files:
     - "**/*"
