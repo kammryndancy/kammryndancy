@@ -1,0 +1,151 @@
+/*---------------------------------------------------------------------
+File Name: style.scss
+---------------------------------------------------------------------*/
+$color_1: #666666;
+$color_2: #1f1f1f;
+$color_3: #111111;
+$color_4: #212121;
+$color_5: #222222;
+$color_6: #767676;
+$color_7: #323232;
+$color_8: #fff;
+$color_9: #000;
+$color_10: #292929;
+$color_11: #000000;
+$color_12: #3a404e;
+$color_13: #0c0c0d;
+$color_14: #031330;
+$color_15: #888888;
+$color_16: #000b0a;
+$color_17: #757575;
+$color_18: #151515;
+$color_19: #ffffff;
+$color_20: #bdbdbe;
+$font-family_1: 'Poppins', sans-serif;
+$font-family_2: 'Open Sans', sans-serif;
+$background-color_1: transparent;
+$background-color_2: #323232;
+$background-color_3: #464646c7;
+$border-color_1: #ffffff;
+
+/** footer **/
+.footer {
+  background: #222222;
+  padding-top: 90px;
+}
+.newslatter_form {
+  display: flex;
+  align-items: center;
+  margin-bottom: 70px;
+}
+.ente {
+  color: $color_9;
+  border: inherit;
+  padding: 0 30px;
+  height: 66px;
+  width: 100%;
+  font-size: 17px;
+}
+.subs_btn {
+  max-width: 289px;
+  display: inline-block;
+  background: #151515;
+  height: 66px;
+  width: 100%;
+  color: $color_8;
+  font-size: 17px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: ease-in all 0.5s;
+  &:hover {
+    background: #fff;
+    color: $color_18;
+    transition: ease-in all 0.5s;
+  }
+}
+.Informa {
+  h3 {
+    color: $color_19;
+    font-size: 23px;
+    font-weight: bold;
+    line-height: 21px;
+    margin-bottom: 15px;
+    margin-top: 26px;
+    text-transform: uppercase;
+  }
+  li {
+    font-size: 17px;
+    line-height: 37px;
+    color: $color_19;
+    a {
+      &:hover {
+        color: $color_20;
+      }
+    }
+  }
+}
+.helpful {
+  ul {
+    li {
+      a {
+        color: $color_8;
+        font-size: 17px;
+        line-height: 30px;
+        &:hover {
+          color: $color_20;
+        }
+      }
+    }
+  }
+}
+ul.social_icon {
+  float: right;
+  li {
+    display: inline-block;
+    padding-right: 15px;
+    &:last-child {
+      padding-right: 0;
+    }
+    a {
+      color: $color_8;
+      display: inline-block;
+      text-align: center;
+      line-height: 33px;
+      font-size: 28px;
+      font-weight: bold;
+      &:hover {
+        color: $color_20;
+        transform: rotate(360deg);
+        transition: ease-in all 0.7s;
+      }
+    }
+  }
+}
+.conta {
+  ul {
+    li {
+      a {
+        color: $color_19;
+        i {
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+}
+.copyright {
+  background: #151515;
+  margin-top: 80px;
+  padding: 20px 0;
+  p {
+    color: $color_20;
+    font-weight: 400;
+  }
+  a {
+    color: $color_20;
+    &:hover {
+      color: $color_8;
+    }
+  }
+}
+/** end footer **/

@@ -8,7 +8,10 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { BrewingModule} from "./brewing/brewing.module";
+import { BrewingModule } from "./brewing/brewing.module";
+import { TopsectionComponent } from "./components/topsection/topsection.component";
+import { HttpClientModule } from "@angular/common/http";
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { BrewingModule} from "./brewing/brewing.module";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BrewingModule
+    BrewingModule,
+    HttpClientModule,
+    NgOptimizedImage,
+    TopsectionComponent
   ],
   bootstrap: [ AppComponent ]
 })

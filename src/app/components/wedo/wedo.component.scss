@@ -1,0 +1,130 @@
+/*---------------------------------------------------------------------
+File Name: style.scss
+---------------------------------------------------------------------*/
+$color_1: #666666;
+$color_2: #1f1f1f;
+$color_3: #111111;
+$color_4: #212121;
+$color_5: #222222;
+$color_6: #767676;
+$color_7: #323232;
+$color_8: #fff;
+$color_9: #000;
+$color_10: #292929;
+$color_11: #000000;
+$color_12: #3a404e;
+$color_13: #0c0c0d;
+$color_14: #031330;
+$color_15: #888888;
+$color_16: #000b0a;
+$color_17: #757575;
+$color_18: #151515;
+$color_19: #ffffff;
+$color_20: #bdbdbe;
+$font-family_1: 'Poppins', sans-serif;
+$font-family_2: 'Open Sans', sans-serif;
+$background-color_1: transparent;
+$background-color_2: #323232;
+$background-color_3: #464646c7;
+$border-color_1: #ffffff;
+
+/** we_do **/
+.we_do {
+  background: #fff;
+  padding: 90px 0 190px 0;
+  .titlepage {
+    &::before {
+      border: #2e2f34 solid 5px;
+    }
+  }
+}
+.we1_do {
+  position: inherit;
+  padding: 0;
+}
+#bo_ho {
+  &:hover {
+    border: #292a2c solid 1px;
+    transition: ease-in all 0.5s;
+  }
+}
+.we_box {
+  border: #e6e7e8 solid 1px;
+  transition: ease-in all 0.5s;
+  padding: 40px;
+  margin-bottom: 26px;
+  h3 {
+    color: $color_10;
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 25px;
+    text-transform: uppercase;
+    padding-top: 25px;
+    img {
+      float: right;
+    }
+  }
+  p {
+    color: $color_10;
+    padding-top: 25px;
+    display: block;
+    padding-bottom: 40px;
+  }
+  .read_more {
+    max-width: 131px;
+    height: 41px;
+    line-height: 41px;
+    display: block;
+    margin: 0 0 0 auto;
+    background: #464646;
+  }
+}
+#we1 {
+  .carousel-indicators {
+    display: none;
+  }
+  a.carousel-control-next {
+    background: #ffffff;
+    width: 67px;
+    height: 59px;
+    top: 109%;
+    opacity: 1;
+    font-size: 33px;
+    color: $color_11;
+    box-shadow: 3px 0 36px rgba(30, 30, 30, 0.2);
+    right: 43%;
+    &:focus {
+      background: #464646;
+      color: $color_8;
+      opacity: 1;
+    }
+    &:hover {
+      background: #464646;
+      color: $color_8;
+      opacity: 1;
+    }
+  }
+  a.carousel-control-prev {
+    background: #ffffff;
+    width: 67px;
+    height: 59px;
+    top: 109%;
+    opacity: 1;
+    font-size: 33px;
+    color: $color_11;
+    box-shadow: 3px 0 36px rgba(30, 30, 30, 0.2);
+    left: 43%;
+    &:focus {
+      background: #464646;
+      color: $color_8;
+      opacity: 1;
+    }
+    &:hover {
+      background: #464646;
+      color: $color_8;
+      opacity: 1;
+    }
+  }
+}
+
+/** end we_do **/
