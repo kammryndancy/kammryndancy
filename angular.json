@@ -18,9 +18,7 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/assets/css/theme"
-              ]
+              "includePaths": []
             },
             "outputPath": "dist/kammryndancy",
             "index": "src/index.html",
@@ -98,9 +96,7 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
-              "src/assets/css/theme.scss"
-            ],
+            "styles": [],
             "scripts": []
           }
         }
