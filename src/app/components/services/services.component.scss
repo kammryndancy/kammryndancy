@@ -1,0 +1,31 @@
+
+/* Section: Services */
+.section-services {
+  .subheading-text {
+    margin-bottom: 90px;
+  }
+  .col-md-3 {
+    &:nth-child(n+5) {
+      .service {
+        margin-top: 60px;
+      }
+    }
+  }
+}
+.service {
+  min-height: 250px;
+}
+.service-title {
+  margin: 35px 0 25px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.service-info {
+  font-size: 13px;
+}
+
+.service.tinlion {
+  img {
+    width: 60px;
+  }
+}

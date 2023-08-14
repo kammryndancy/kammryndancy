@@ -1,57 +1,33 @@
-<header>
-  <div class="header">
-    <div class="container-fluid">
-      <div class="row d_flex">
-        <div class=" col-md-2 col-sm-3 col logo_section">
-          <div class="full">
-            <div class="center-desk">
-              <div class="logo">
-                <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page">
-                  <img ngSrc="assets/images/tinlion_logo_3.png" height="100" width="170" alt="TinLion"/>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-8 col-sm-9">
-          <nav class="navigation navbar navbar-expand-md navbar-dark">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarsExample04">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/brewing" routerLinkActive="active" ariaCurrentWhenActive="page">Tinlion Brewing</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/woodwork" routerLinkActive="active" ariaCurrentWhenActive="page">Woodworking</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/whiskey" routerLinkActive="active" ariaCurrentWhenActive="page">Whiskey</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/roaster" routerLinkActive="active" ariaCurrentWhenActive="page">TinLion Roastery</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" routerLink="/DND" routerLinkActive="active" ariaCurrentWhenActive="page">DnD Campaigns</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </div>
-        <div class="col-md-2 d_none">
-          <ul class="email text_align_right">
-            <li> <a href="Javascript:void(0)"> Login </a></li>
-            <li> <a href="Javascript:void(0)"> <i class="fa fa-search" style="cursor: pointer;" aria-hidden="true"> </i></a> </li>
-          </ul>
-        </div>
+<header id="masthead" class="site-header site-header-white">
+  <nav id="primary-navigation" class="site-navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a routerLink="/home" class="site-title"><span>Kammryn</span>Dancy</a>
+      </div>
+      <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li routerLink="/brewing" routerLinkActive="active">
+            <a class="nav-link" routerLink="/brewing" routerLinkActive="active" ariaCurrentWhenActive="page">Brewing</a>
+          </li>
+          <li routerLink="/woodwork" routerLinkActive="active">
+            <a class="nav-link" routerLink="/woodwork" routerLinkActive="active" ariaCurrentWhenActive="page">Woodworking</a>
+          </li>
+          <li routerLink="/spirits" routerLinkActive="active">
+            <a class="nav-link" routerLink="/spirits" routerLinkActive="active" ariaCurrentWhenActive="page">Spirits</a>
+          </li>
+          <li routerLink="/roaster" routerLinkActive="active">
+            <a class="nav-link" routerLink="/roaster" routerLinkActive="active" ariaCurrentWhenActive="page">Roastery</a>
+          </li>
+          <li class="dropdown" routerLink="/dnd" routerLinkActive="active">
+            <a class="dropdown-toggle" data-toggle="dropdown" routerLink="/dnd" routerLinkActive="active" ariaCurrentWhenActive="page">DnD Campaigns<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+              <li routerLink="/withaerstice" routerLinkActive="active"><a routerLink="/withaerstice" routerLinkActive="active">Withaerstice</a></li>
+              <li routerLink="/blacksheep" routerLinkActive="active"><a routerLink="/blacksheep" routerLinkActive="active">Black Sheep</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
-  </div>
+  </nav>
 </header>
-<div>
-  <div [@routeAnimation]="getRouteAnimationData()">
-    <router-outlet></router-outlet>
-  </div>
-  <router-outlet name="popup"></router-outlet>
-</div>
+<router-outlet></router-outlet>

@@ -8,7 +8,7 @@ const appRoutes: Routes = [
   {
     path: 'brewing',
     loadChildren: () =>
-      import('./brewing/brewing.module').then(m => m.BrewingModule),
+      import('./brewing_orig/brewing.module').then(m => m.BrewingModule),
     data: {preload: true}
   },
   {

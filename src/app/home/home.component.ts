@@ -1,17 +1,23 @@
 import { Component } from '@angular/core';
 
-import { TopsectionComponent} from "../components/topsection/topsection.component";
-import { WedoComponent} from "../components/wedo/wedo.component";
-import { FooterComponent} from "../components/footer/footer.component";
+import { FooterComponent } from "../components/footer/footer.component";
+import { LandingComponent } from "../components/landing/landing.component";
+import { BaseComponent } from "../components/base/base.component";
+import { ServicesComponent } from "../components/services/services.component";
+import { MapComponent } from "../components/map/map.component";
+import { PortfolioComponent } from "../components/portfolio/portfolio.component";
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   imports: [
-    TopsectionComponent,
-    WedoComponent,
-    FooterComponent
+    LandingComponent,
+    BaseComponent,
+    FooterComponent,
+    ServicesComponent,
+    MapComponent,
+    PortfolioComponent
   ],
   standalone: true
 })

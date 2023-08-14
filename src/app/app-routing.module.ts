@@ -4,37 +4,45 @@ import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { SelectivePreloadingStrategyService } from './selective-preloading-strategy.service';
-import {HomeComponent} from "./home/home.component";
+import { HomeComponent } from "./home/home.component";
+import { BrewingComponent} from "./brewing/brewing.component";
+import { WoodworkingComponent } from "./woodwork/woodworking.component";
+import { SpiritsComponent } from "./spirits/spirits.component";
+import { RoasterComponent } from "./roaster/roaster.component";
+import { DndComponent } from "./dnd/dnd.component";
 
 const routes: Routes = [
-  // {
-  //   path: 'brewing',
-  //   loadChildren: () => import('./brewing/brewing.module').then(m => m.BrewingModule),
-  //   data: { preload: true }
-  // },
-  {
-    path: 'DND',
-    component: HomeComponent
-  },
   {
     path: 'roaster',
-    component: HomeComponent
+    component: RoasterComponent
   },
   {
-    path: 'whiskey',
-    component: HomeComponent
+    path: 'spirits',
+    component: SpiritsComponent
   },
   {
     path: 'woodwork',
-    component: HomeComponent
+    component: WoodworkingComponent
   },
   {
     path: 'brewing',
-    component: HomeComponent
+    component: BrewingComponent
   },
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'withaerstice',
+    component: DndComponent
+  },
+  {
+    path: 'blacksheep',
+    component: DndComponent
+  },
+  {
+    path: 'dnd',
+    component: DndComponent
   },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

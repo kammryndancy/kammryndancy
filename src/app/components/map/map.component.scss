@@ -1,0 +1,32 @@
+$color_1: #fff;
+$color_2: #0960d7;
+
+/* Section: Map Feature */
+.section-map-feature {
+  padding-top: 250px;
+  background: #071021 url(/assets/images/map.png) no-repeat top center / cover;
+  h2 {
+    padding-bottom: 30px;
+    margin: 0;
+    color: $color_1;
+  }
+  p {
+    color: $color_1;
+  }
+  .btn {
+    margin: 80px 0 215px;
+  }
+}
+.counter {
+  margin-bottom: 30px;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1;
+}
+.counter-item {
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    color: $color_2;
+  }
+}
