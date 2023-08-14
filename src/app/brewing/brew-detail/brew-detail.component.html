@@ -1,8 +1,0 @@
-<h2>Brews</h2>
-<div *ngIf="brew$ | async as brew">
-  <h3>{{ brew.name }}</h3>
-  <p>Id: {{ brew.id }}</p>
-  <label for="brew-name">Brew name: </label>
-  <input type="text" id="brew-name" [(ngModel)]="brew.name" placeholder="name"/>
-  <button type="button" (click)="gotoBrews(brew)">Back</button>
-</div>

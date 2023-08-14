@@ -1,0 +1,108 @@
+$color_1: #26272d;
+$color_2: #fff;
+$color_3: #6fc754;
+$background-color_1: rgba(255,255,255,0.5);
+$background-color_2: transparent;
+$background-color_3: #26272d;
+$background-color_4: rgba(38,39,45,0.5);
+
+/* landing
+================================================== */
+.landing {
+  background: url(/assets/images/green-forest.jpg) no-repeat center / cover;
+  height: 100%;
+  width: 100%;
+  display: table;
+  position: relative;
+  .breadcrumb {
+    padding-top: 60px;
+    margin-bottom: 0;
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: 45px;
+      height: 12px;
+      width: 80px;
+      border-top: 5px solid #fff;
+      border-bottom: 3px solid #fff;
+      transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      -o-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+    }
+  }
+}
+.overlay {
+  &:before {
+    content: '';
+    //background-color: $background-color_1;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+}
+.landing-content {
+  display: table-cell;
+  vertical-align: middle;
+  padding-top: 75px;
+}
+.landing-text {
+  max-width: 890px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  text-align: center;
+  h1 {
+    position: relative;
+    margin: 0;
+  }
+  p {
+    position: relative;
+    margin: 45px 0 30px;
+    font-size: 20px;
+    color: $color_2;
+  }
+  .btn {
+    position: relative;
+    background-color: $background-color_2;
+    &:hover {
+      background-color: $background-color_3;
+      color: $color_2;
+    }
+  }
+}
+.subpage-landing {
+  height: 400px;
+  .landing-content {
+    color: $color_2;
+    h1 {
+      color: $color_2;
+    }
+  }
+  a {
+    color: $color_2;
+    &:hover {
+      color: $color_3;
+    }
+  }
+}
+.subpage-landing.overlay {
+  &:before {
+    background-color: $background-color_4;
+  }
+}
+.portfolio-landing {
+  background: url(/assets/images/portfolio-hero.jpg) no-repeat center / cover;
+}
+.blog-landing {
+  background: url(/assets/images/blog-hero.jpg) no-repeat center / cover;
+}
+.contact-landing {
+  background: url(/assets/images/contact-hero.jpg) no-repeat center / cover;
+}

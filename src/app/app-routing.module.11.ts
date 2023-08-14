@@ -6,12 +6,6 @@ import {HomeComponent} from "./home/home.component";
 
 const appRoutes: Routes = [
   {
-    path: 'brewing',
-    loadChildren: () =>
-      import('./brewing/brewing.module').then(m => m.BrewingModule),
-    data: {preload: true}
-  },
-  {
     path: 'home',
     component: HomeComponent
   },

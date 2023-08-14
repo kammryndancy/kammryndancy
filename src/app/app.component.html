@@ -1,15 +1,33 @@
-<div class="wrapper">
-  <a routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page"><h1 class="title">{{ title }}</h1></a>
-  <nav>
-    <a routerLink="/brewing" routerLinkActive="active" ariaCurrentWhenActive="page">TinLion Brewing</a>
-    <a routerLink="/woodwork" routerLinkActive="active" ariaCurrentWhenActive="page">Woodworking</a>
-    <a routerLink="/whiskey" routerLinkActive="active" ariaCurrentWhenActive="page">Whiskey</a>
-    <a routerLink="/roaster" routerLinkActive="active" ariaCurrentWhenActive="page">TinLion Roastery</a>
-    <a routerLink="/DND" routerLinkActive="active" ariaCurrentWhenActive="page">DnD Campaigns</a>
-<!--    <a [routerLink]="[{ outlets: { popup: ['compose'] } }]">Contact</a>-->
+<header id="masthead" class="site-header site-header-white">
+  <nav id="primary-navigation" class="site-navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a routerLink="/home" class="site-title"><span>Kammryn</span>Dancy</a>
+      </div>
+      <div class="collapse navbar-collapse" id="agency-navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li routerLink="/brewing" routerLinkActive="active">
+            <a class="nav-link" routerLink="/brewing" routerLinkActive="active" ariaCurrentWhenActive="page">Brewing</a>
+          </li>
+          <li routerLink="/woodwork" routerLinkActive="active">
+            <a class="nav-link" routerLink="/woodwork" routerLinkActive="active" ariaCurrentWhenActive="page">Woodworking</a>
+          </li>
+          <li routerLink="/spirits" routerLinkActive="active">
+            <a class="nav-link" routerLink="/spirits" routerLinkActive="active" ariaCurrentWhenActive="page">Spirits</a>
+          </li>
+          <li routerLink="/roaster" routerLinkActive="active">
+            <a class="nav-link" routerLink="/roaster" routerLinkActive="active" ariaCurrentWhenActive="page">Roastery</a>
+          </li>
+          <li class="dropdown" routerLink="/dnd" routerLinkActive="active">
+            <a class="dropdown-toggle" data-toggle="dropdown" routerLink="/dnd" routerLinkActive="active" ariaCurrentWhenActive="page">DnD Campaigns<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+              <li routerLink="/withaerstice" routerLinkActive="active"><a routerLink="/withaerstice" routerLinkActive="active">Withaerstice</a></li>
+              <li routerLink="/blacksheep" routerLinkActive="active"><a routerLink="/blacksheep" routerLinkActive="active">Black Sheep</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
-  <div [@routeAnimation]="getRouteAnimationData()">
-    <router-outlet></router-outlet>
-  </div>
-  <router-outlet name="popup"></router-outlet>
-</div>
+</header>
+<router-outlet></router-outlet>

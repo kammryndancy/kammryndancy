@@ -5,21 +5,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { BrewingModule} from "./brewing/brewing.module";
+import { HttpClientModule } from "@angular/common/http";
+import {NgOptimizedImage} from "@angular/common";
+import {LandingComponent} from "./components/landing/landing.component";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PageNotFoundComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    BrewingModule
+    HttpClientModule,
+    NgOptimizedImage,
+    LandingComponent
   ],
   bootstrap: [ AppComponent ]
 })
