@@ -1,12 +1,14 @@
 $color_1: #26272d;
 $color_2: #fff;
 $color_3: #6fc754;
+$color_4: #163d15;
+$color_5: #60a14d;
 $background-color_1: transparent;
 $background-color_2: #fff;
 $background-color_3: #000;
 $border-color_1: #fff;
 $border-color_2: #000;
-$color_4: #afbaab;
+$color_4: #2f591f;
 
 /* HEADER
 ================================================== */
@@ -24,7 +26,7 @@ $color_4: #afbaab;
   line-height: 26px;
   color: $color_2;
   &:hover {
-    color: $color_4;
+    color: $color_3;
   }
   span {
     font-weight: 700;
@@ -61,11 +63,11 @@ $color_4: #afbaab;
       }
       &:hover {
         background-color: $background-color_1;
-        color: $color_4;
+        color: $color_5;
       }
       &:focus {
         background-color: $background-color_1;
-        color: $color_4;
+        color: $color_5;
       }
     }
     + {
@@ -78,6 +80,12 @@ $color_4: #afbaab;
     >a {
       background-color: $background-color_1;
       color: $color_3;
+    }
+  }
+  >li.dark {
+    >a {
+      background-color: $background-color_1;
+      color: $color_4;
     }
   }
   .dropdown-menu {
@@ -228,21 +236,3 @@ $color_4: #afbaab;
     background-color: $background-color_3;
   }
 }
-//.site-header-white {
-//  .navbar-nav {
-//    >li {
-//      >a {
-//        color: $color_2;
-//      }
-//    }
-//  }
-//  .site-title {
-//    color: $color_2;
-//  }
-//  .dropdown.open {
-//    >a {
-//      background-color: $background-color_1;
-//      color: $color_3;
-//    }
-//  }
-//}

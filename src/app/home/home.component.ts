@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FooterComponent } from "../components/footer/footer.component";
 import { LandingComponent } from "../components/landing/landing.component";
 import { BaseComponent } from "../components/base/base.component";
-import { ServicesComponent } from "../components/services/services.component";
+import { HobbiesComponent } from "../components/services/hobbies.component";
 import { MapComponent } from "../components/map/map.component";
 import { PortfolioComponent } from "../components/portfolio/portfolio.component";
 
@@ -15,7 +15,7 @@ import { PortfolioComponent } from "../components/portfolio/portfolio.component"
     LandingComponent,
     BaseComponent,
     FooterComponent,
-    ServicesComponent,
+    HobbiesComponent,
     MapComponent,
     PortfolioComponent
   ],

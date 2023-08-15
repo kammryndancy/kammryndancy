@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ChildrenOutletContexts } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,4 @@ import { ChildrenOutletContexts } from '@angular/router';
 })
 export class AppComponent {
   title = 'Kammryn Dancy';
-  constructor(private contexts: ChildrenOutletContexts) {}
 }
