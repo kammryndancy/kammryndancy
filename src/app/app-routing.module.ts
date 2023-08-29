@@ -10,6 +10,7 @@ import { WoodworkingComponent } from "./woodwork/woodworking.component";
 import { SpiritsComponent } from "./spirits/spirits.component";
 import { RoasterComponent } from "./roaster/roaster.component";
 import { DndComponent } from "./dnd/dnd.component";
+import { PhotographyComponent } from "./photography/photography.component";
 
 const routes: Routes = [
   {
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path: 'dnd',
     component: DndComponent
+  },
+  {
+    path: 'photography',
+    component: PhotographyComponent
   },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
