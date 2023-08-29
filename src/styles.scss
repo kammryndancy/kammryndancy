@@ -116,6 +116,18 @@ h5 {
     color: $color_5;
   }
 }
+.btn-gray.active{
+  background-color: $background-color_5;
+  color: $background-color_4;
+  &:hover {
+    background-color: $background-color_4;
+    color: $color_5;
+  }
+  &:focus {
+    background-color: $background-color_4;
+    color: $color_5;
+  }
+}
 .btn-green {
   background-color: $background-color_4;
   color: $color_5;
