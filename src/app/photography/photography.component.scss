@@ -1,0 +1,28 @@
+$background-color_1: #267df4;
+
+/* SITEMAIN
+================================================== */
+/* site-section */
+.site-section {
+  padding: 100px 0 140px;
+}
+.subheading-text {
+  font-size: 20px;
+  font-style: italic;
+}
+.heading-separator {
+  position: relative;
+  margin: 0;
+  padding-bottom: 70px;
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    width: 50px;
+    margin: 0 auto;
+    background-color: $background-color_1;
+  }
+}
