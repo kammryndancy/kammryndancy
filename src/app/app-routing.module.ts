@@ -11,6 +11,7 @@ import { SpiritsComponent } from "./spirits/spirits.component";
 import { RoasterComponent } from "./roaster/roaster.component";
 import { DndComponent } from "./dnd/dnd.component";
 import { PhotographyComponent } from "./photography/photography.component";
+import { ScavengerHuntComponent } from "./scavenger-hunt/scavenger-hunt.component";
 
 const routes: Routes = [
   {
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path: 'photography',
     component: PhotographyComponent
+  },
+  {
+    path: 'scavenger-hunt',
+    component: ScavengerHuntComponent
   },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }

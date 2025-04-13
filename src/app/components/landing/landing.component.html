@@ -1,9 +1,9 @@
 <div id="landing" class="landing overlay" [ngStyle]="AddBackgroundCssStyle(imageId)">
-  <div class="landing-content">
+  <div class="landing-content" [style.color]="textColor || '#ffffff'">
     <div class="landing-text">
       <h1>{{greeting}}</h1>
       <p>{{message}}</p>
-      <a class="btn btn-border">{{noticeButton}}</a>
+      <a class="btn btn-border" [style.color]="textColor || '#ffffff'">{{noticeButton}}</a>
     </div>
   </div>
 </div>

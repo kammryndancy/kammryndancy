@@ -15,6 +15,8 @@ export class LandingComponent {
   @Input() message: string | undefined;
   @Input() noticeButton: string | undefined;
   @Input() imageId: string | undefined;
+  @Input() textColor: string | null = '#ffffff'; // Default to white text
+
   AddBackgroundCssStyle(imageId: String | undefined) {
     let CssStyles = {
       'background': 'url(/assets/images/green-forest.jpg) no-repeat center / cover'
