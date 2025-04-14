@@ -1,26 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { LandingComponent } from '../components/landing/landing.component';
 import { FooterComponent } from '../components/footer/footer.component';
+import { ScavengerHuntComponent as ComponentScavengerHunt } from '../components/component-scavenger-hunt/scavenger-hunt.component';
 import { ImageProcessingService } from '../services/image-processing.service';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Component({
-  selector: 'scavenger-hunt',
-  templateUrl: './scavenger-hunt.component.html',
-  styleUrls: ['./scavenger-hunt.component.scss'],
+  selector: 'app-scavenger-hunt',
+  template: `
+    <landing 
+      greeting="Nature Scavenger Hunt" 
+      message="Explore the great outdoors with our interactive scavenger hunt" 
+      noticeButton="Start Hunt" 
+      [imageId]="getSeasonImage()"
+      [textColor]="textColor$ | async"
+    />
+    <main id="main" class="site-main">
+      <component-scavenger-hunt
+        [title]="title"
+        [description]="description"
+      ></component-scavenger-hunt>
+    </main>
+    <footer-comp></footer-comp>
+  `,
   standalone: true,
-  imports: [
-    CommonModule,
-    LandingComponent,
-    FooterComponent
-  ]
+  imports: [CommonModule, LandingComponent, FooterComponent, ComponentScavengerHunt],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ScavengerHuntComponent implements OnInit {
-  currentImage: string = '';
-  textColor$!: Observable<string>;
+  title = 'Nature Scavenger Hunt';
+  description = 'Explore the great outdoors with our interactive scavenger hunt';
   defaultTextColor = '#ffffff';
+  textColor$!: Observable<string>;
 
   constructor(private imageProcessingService: ImageProcessingService) {}
 
@@ -30,7 +44,6 @@ export class ScavengerHuntComponent implements OnInit {
 
   private updateImageAndColor() {
     const image = this.getSeasonImage();
-    this.currentImage = image;
     this.textColor$ = this.imageProcessingService.getContrastColor(image).pipe(
       catchError(() => of(this.defaultTextColor))
     );
