@@ -10,22 +10,8 @@ import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-scavenger-hunt',
-  template: `
-    <landing 
-      greeting="Nature Scavenger Hunt" 
-      message="Explore the great outdoors with our interactive scavenger hunt" 
-      noticeButton="Start Hunt" 
-      [imageId]="getSeasonImage()"
-      [textColor]="textColor$ | async"
-    />
-    <main id="main" class="site-main">
-      <component-scavenger-hunt
-        [title]="title"
-        [description]="description"
-      ></component-scavenger-hunt>
-    </main>
-    <footer-comp></footer-comp>
-  `,
+  templateUrl: './scavenger-hunt.component.html',
+  styleUrls: ['./scavenger-hunt.component.scss'],
   standalone: true,
   imports: [CommonModule, LandingComponent, FooterComponent, ComponentScavengerHunt],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
