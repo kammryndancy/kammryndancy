@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { FooterComponent } from "../components/footer/footer.component";
 import { LandingComponent } from "../components/landing/landing.component";
-import { PhotoexamplesComponent } from "../components/photogrpahy/photoexamples.component";
+import { PortfolioPhotosComponent } from '../components/portfolio-photos/portfolio-photos.component';
 
 @Component({
   selector: 'photography',
@@ -11,7 +11,7 @@ import { PhotoexamplesComponent } from "../components/photogrpahy/photoexamples.
   imports: [
     LandingComponent,
     FooterComponent,
-    PhotoexamplesComponent
+    PortfolioPhotosComponent
   ],
   standalone: true
 })

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 interface PhotoItem {
   src: string;
@@ -10,13 +10,13 @@ interface PhotoItem {
 }
 
 @Component({
-  selector: 'photoexamples',
-  templateUrl: './photoexamples.component.html',
-  styleUrls: ['./photoexamples.component.scss'],
+  selector: 'portfolio-photos',
+  templateUrl: './portfolio-photos.component.html',
+  styleUrls: ['./portfolio-photos.component.scss'],
   standalone: true,
   imports: [CommonModule]
 })
-export class PhotoexamplesComponent implements OnInit {
+export class PortfolioPhotosComponent implements OnInit {
   allPhotos: PhotoItem[] = [
     { src: '/assets/images/portfolio/tintin_lionel-1.jpg', alt: 'Tintin the Cat', groups: ['cats'], title: 'Tintin Lounging', link: 'https://example.com/tintin' },
     { src: '/assets/images/portfolio/yoshi-1.JPG', alt: 'Yoshi the Cat', groups: ['cats'], title: 'Yoshi Relaxing', link: 'https://example.com/yoshi' },
@@ -84,52 +84,82 @@ export class PhotoexamplesComponent implements OnInit {
     { src: '/assets/images/portfolio/katashi-3.jpg', alt: 'Katashi the Cat', groups: ['cats'], title: 'Katashi Lounging', link: 'https://example.com/katashi' }
   ];
 
+  filters = [
+    { label: 'All', value: 'all' },
+    { label: 'Cats', value: 'cats' },
+    { label: 'Dogs', value: 'dogs' },
+    { label: 'Rest', value: 'rest' }
+  ];
+
   filteredPhotos: PhotoItem[] = [];
-  visiblePhotos: PhotoItem[] = [];
-  currentGroup: string = 'all';
-  photosPerLoad: number = 8;
-  currentPage: number = 1;
+  displayedPhotos: PhotoItem[] = [];
+  activeFilter: string = 'all';
+  modalPhoto: PhotoItem | null = null;
+  itemsPerPage = 4;
+  currentPage = 1;
 
   ngOnInit(): void {
-    this.filterPhotos(this.currentGroup);
+    this.applyFilter('all');
   }
 
-  filterPhotos(group: string): void {
-    this.currentGroup = group;
+  applyFilter(filter: string): void {
+    this.activeFilter = filter;
     this.currentPage = 1;
-
-    // Filter photos based on group
-    this.filteredPhotos = group === 'all' 
-      ? this.allPhotos 
-      : this.allPhotos.filter(photo => photo.groups.includes(group));
-    
-    // Load initial set of photos (8 photos)
-    this.visiblePhotos = this.filteredPhotos.slice(0, this.photosPerLoad);
+    this.filteredPhotos = this.getFilteredPhotos();
+    this.shufflePhotos();
+    // Ensure at least 4 photos are displayed if available
+    if (this.filteredPhotos.length > 0 && this.filteredPhotos.length < this.itemsPerPage) {
+      this.displayedPhotos = this.filteredPhotos.slice(0, this.itemsPerPage);
+    } else {
+      this.updateDisplayedPhotos();
+    }
   }
 
-  loadMorePhotos(): void {
-    const startIndex = this.currentPage * this.photosPerLoad;
-    const endIndex = startIndex + this.photosPerLoad;
-    
-    const morePhotos = this.filteredPhotos.slice(startIndex, endIndex);
-    
-    // Add new photos to existing visible photos
-    this.visiblePhotos = [
-      ...this.visiblePhotos, 
-      ...morePhotos
-    ];
+  getFilteredPhotos(): PhotoItem[] {
+    if (this.activeFilter === 'all') {
+      return [...this.allPhotos];
+    }
+    if (this.activeFilter === 'rest') {
+      return this.allPhotos.filter(photo => !photo.groups.includes('cats') && !photo.groups.includes('dogs'));
+    }
+    return this.allPhotos.filter(photo => photo.groups.includes(this.activeFilter));
+  }
 
-    // Increment page
+  shufflePhotos(): void {
+    // Fisher-Yates shuffle for random order
+    for (let i = this.filteredPhotos.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [this.filteredPhotos[i], this.filteredPhotos[j]] = [this.filteredPhotos[j], this.filteredPhotos[i]];
+    }
+  }
+
+  updateDisplayedPhotos(): void {
+    const end = this.currentPage * this.itemsPerPage;
+    this.displayedPhotos = this.filteredPhotos.slice(0, end);
+  }
+
+  loadMore(): void {
     this.currentPage++;
+    this.updateDisplayedPhotos();
   }
 
-  // Determine if more photos can be loaded
+  openModal(photo: PhotoItem): void {
+    this.modalPhoto = photo;
+  }
+
+  closeModal(): void {
+    this.modalPhoto = null;
+  }
+
+  isFilterActive(filter: string): boolean {
+    return this.activeFilter === filter;
+  }
+
   get hasMorePhotos(): boolean {
-    return this.visiblePhotos.length < this.filteredPhotos.length;
+    return this.displayedPhotos.length < this.filteredPhotos.length;
   }
 
-  // Track photos for performance optimization
-  trackByFn(index: number, item: PhotoItem): string {
-    return item.src;
+  get photoGridRows(): number[] {
+    return Array(Math.ceil(this.displayedPhotos.length / 4)).fill(0).map((x, i) => i);
   }
 }

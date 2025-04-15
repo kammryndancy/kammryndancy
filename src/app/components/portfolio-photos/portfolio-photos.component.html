@@ -1,0 +1,30 @@
+<section class="site-section subpage-site-section section-portfolio">
+  <div class="container">
+    <ul class="portfolio-sorting list-inline text-center">
+      <li *ngFor="let filter of filters">
+        <a class="btn btn-gray" [class.active]="isFilterActive(filter.value)" (click)="applyFilter(filter.value)">{{filter.label}}</a>
+      </li>
+    </ul>
+    <ng-container *ngFor="let i of photoGridRows">
+      <div id="grid" class="row">
+        <ng-container *ngFor="let photo of displayedPhotos.slice(i * 4, (i + 1) * 4)">
+          <div class="portfolio-item col-lg-3 col-md-4 col-xs-6">
+            <img [src]="photo.src" class="img-res" [alt]="photo.alt" (click)="openModal(photo)" loading="lazy">
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+    <div class="text-center" *ngIf="hasMorePhotos">
+      <button class="btn btn-gray portfolio-btn" (click)="loadMore()">Load More</button>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="modalPhoto" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <img [src]="modalPhoto.src" [alt]="modalPhoto.alt" style="max-width:90vw; max-height:80vh; display:block; margin:auto;" />
+    <h4 style="text-align:center; margin-top:1rem;">{{modalPhoto.title}}</h4>
+    <button class="btn btn-gray" style="display:block; margin:1rem auto 0 auto;" (click)="closeModal()">Close</button>
+  </div>
+</div>
