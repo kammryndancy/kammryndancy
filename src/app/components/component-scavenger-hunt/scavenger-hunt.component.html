@@ -1,20 +1,7 @@
 <div class="scavenger-hunt">
-  <header>
-    <h1>Nature Scavenger Hunt</h1>
-    <p>{{ description }}</p>
-  </header>
-
   <div class="content">
-    <div *ngIf="isHuntGenerated" class="progress-container">
-      <h3>{{ userName ? userName + "'s" : "" }} Nature Find</h3>
-      <div class="progress-bar">
-        <div class="progress-fill" [style.width.%]="(completedCount / scavengerHuntItems.length * 100) || 0">
-          <span>Progress: {{ completedCount }}/{{ scavengerHuntItems.length }} items found</span>
-        </div>
-      </div>
-    </div>
-
     <div *ngIf="!isHuntGenerated" class="form-container">
+      <h2 class="form-title">Create Your Scavenger Hunt</h2>
       <form [formGroup]="scavengerHuntForm" (ngSubmit)="generateHunt()">
         <div class="form-group">
           <label for="userName">Your Name</label>
@@ -25,55 +12,74 @@
           <input type="number" id="itemCount" formControlName="itemCount" min="1" max="20">
         </div>
 
-        <div class="form-group">
-          <label for="season">Season</label>
-          <select id="season" formControlName="season">
-            <option value="spring">Spring</option>
-            <option value="summer">Summer</option>
-            <option value="fall">Fall</option>
-            <option value="winter">Winter</option>
-          </select>
+        <div class="CheckboxGroup">
+          <div class="form-group">
+            <label for="season">Season</label>
+            <select id="season" formControlName="season">
+              <option value="spring">Spring</option>
+              <option value="summer">Summer</option>
+              <option value="fall">Fall</option>
+              <option value="winter">Winter</option>
+            </select>
+          </div>
+          <label class="category-label">Categories to Include</label>
+          <div class="form-group form-group-checkbox">
+            <label>
+              <input type="checkbox" formControlName="includeAnimals">
+              Include Animals
+            </label>
+          </div>
+
+          <div class="form-group form-group-checkbox">
+            <label>
+              <input type="checkbox" formControlName="includePlants">
+              Include Plants
+            </label>
+          </div>
+
+          <div class="form-group form-group-checkbox">
+            <label>
+              <input type="checkbox" formControlName="includeInsects">
+              Include Insects
+            </label>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label>
-            <input type="checkbox" formControlName="includeAnimals">
-            Include Animals
-          </label>
-        </div>
-
-        <div class="form-group">
-          <label>
-            <input type="checkbox" formControlName="includePlants">
-            Include Plants
-          </label>
-        </div>
-
-        <div class="form-group">
-          <label>
-            <input type="checkbox" formControlName="includeInsects">
-            Include Insects
-          </label>
-        </div>
-
-        <button type="submit" [disabled]="!scavengerHuntForm.valid">Generate Hunt</button>
+        <button class="generateHunt" type="submit" [disabled]="!scavengerHuntForm.valid">Generate Hunt</button>
       </form>
     </div>
 
     <div *ngIf="isHuntGenerated" class="hunt-container">
+      <div class="progress-container">
+        <h2 class="list-title">{{ userName ? userName + "'s" : "" }} Nature Find</h2>
+        <div class="progress-bar">
+          <div class="progress-fill" [style.width.%]="(completedCount / scavengerHuntItems.length * 100) || 0"></div>
+        </div>
+        <div class="progress-text">
+          <p>Progress: {{ completedCount }}/{{ scavengerHuntItems.length }} items found</p>
+        </div>
+      </div>
       <div class="items-list">
-        <div *ngFor="let item of scavengerHuntItems; index as i" class="item-card">
+        <div *ngFor="let item of scavengerHuntItems; index as i" class="item-card" [ngClass]="{'completed-item': item.completed}" (click)="toggleComplete(i)">
           <div class="item-content">
-            <img [src]="item.image" [alt]="item.name" class="item-image">
-            <h3>{{ item.name }}</h3>
-            <p>{{ item.description }}</p>
-            <p class="category">Category: {{ item.category }}</p>
-            <div class="controls">
-              <button (click)="toggleComplete(i)" [class.completed]="item.completed">
-                {{ item.completed ? 'Completed' : 'Mark Complete' }}
-              </button>
+            <div class="controls" (click)="$event.stopPropagation()">
+              <input type="checkbox" (click)="toggleComplete(i)" [checked]="item.completed" [class.completed]="item.completed"/>
             </div>
+            <img [src]="item.image" [alt]="item.name" class="item-image" (click)="openImageModal(item.image, item.name, item.description); $event.stopPropagation()">
+            <h3 class="item-name">{{ item.name }}</h3>
+            <p class="item-description">{{ item.description }}</p>
+            <p class="category {{ item.category | lowercase }}-category">Category: {{ item.category }}</p>
           </div>
+        </div>
+      </div>
+      <!-- Modal for image preview -->
+      <div class="image-modal" *ngIf="selectedImage">
+        <div class="modal-backdrop" (click)="closeImageModal()"></div>
+        <div class="modal-content">
+          <button class="close-modal" (click)="closeImageModal()">&times;</button>
+          <img [src]="selectedImage" [alt]="selectedName" class="modal-full-image">
+          <h3 class="modal-item-name">{{ selectedName }}</h3>
+          <p class="modal-item-description">{{ selectedDescription }}</p>
         </div>
       </div>
       <button (click)="resetHunt()">Reset Hunt</button>

@@ -21,6 +21,11 @@ export class ScavengerHuntComponent {
 
   scavengerHuntForm: FormGroup;
 
+  // Modal state for image preview
+  selectedImage: string | null = null;
+  selectedName: string | null = null;
+  selectedDescription: string | null = null;
+
   constructor(private formBuilder: FormBuilder) {
     this.scavengerHuntForm = this.formBuilder.group({
       userName: [''],
@@ -82,5 +87,17 @@ export class ScavengerHuntComponent {
       includePlants: true,
       includeInsects: true
     });
+  }
+
+  openImageModal(image: string, name: string, description: string): void {
+    this.selectedImage = image;
+    this.selectedName = name;
+    this.selectedDescription = description;
+  }
+
+  closeImageModal(): void {
+    this.selectedImage = null;
+    this.selectedName = null;
+    this.selectedDescription = null;
   }
 }
