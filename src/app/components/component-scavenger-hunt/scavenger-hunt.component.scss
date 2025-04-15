@@ -1,131 +1,92 @@
+// Base styles
 .scavenger-hunt {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.content {
-  width: 100%;
-}
+.content, .hunt-container { width: 100%; }
 
+// Hunt container and items
 .hunt-container {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  .items-list {
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 30px;
-  }
+.items-list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
 
-  .item-card {
-    display: flex;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-    transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
-    cursor: pointer;
+// Item card styles
+.item-card {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  transition: all 0.2s;
+  cursor: pointer;
 
-    &:hover {
-      background: #e8f5e9;
-      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.12);
-      transform: translateY(-2px) scale(1.01);
-    }
-
-    &.completed-item {
-      background-color: #f1f8e9;
-    }
-
-    .item-image {
-      width: 60px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 2px solid #e0e0e0;
-    }
-
-    .item-content {
-      display: flex;
-      align-items: center;
-      flex-grow: 1;
-      gap: 15px;
-      
-      h3 {
-        margin: 0 0 0.5rem 0;
-        color: #333;
-      }
-
-      p {
-        margin: 0.5rem 0;
-        color: #666;
-      }
-
-      .category {
-        font-style: italic;
-        color: #888;
-        text-align: center;
-
-      }
-
-      .controls {
-        margin-top: 1rem;
-        
-        button {
-          padding: 0.5rem 1rem;
-          border: none;
-          border-radius: 4px;
-          background: #4CAF50;
-          color: white;
-          cursor: pointer;
-          transition: background 0.2s;
-
-          &:hover {
-            background: #45a049;
-          }
-
-          &.completed {
-            background: #666;
-          }
-        }
-      }
-
-      .item-name {
-        font-size: 16px;
-        flex-grow: 1;
-      }
-    }
-  }
-
-  .category {
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 14px;
-    margin-left: 10px;
-  }
-  
-  .plant-category{
-    background-color: #a5d6a7;
-  }
-  .animal-category{
-    background-color: #ffcc80;
-  }
-  .insect-category{
-    background-color: #90caf9;
-  }
-
-  .completed-item {
-    .item-name,
-    .item-description,
-    .category {
-      text-decoration: line-through;
-      color: #888;
-    }
+  &:hover {
+    background: #e8f5e9;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.12);
+    transform: translateY(-2px) scale(1.01);
   }
 }
 
+.item-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+}
+
+.item-content {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  gap: 15px;
+  
+  h3 { margin: 0 0 0.5rem 0; }
+  p { margin: 0.5rem 0; }
+}
+
+.item-name {
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+// Categories
+.category {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.plant-category { background-color: #a5d6a7; }
+.animal-category { background-color: #ffcc80; }
+.insect-category { background-color: #90caf9; }
+
+// Completed states
+.completed-item {
+  background-color: #f1f8e9;
+  
+  .item-name, .item-description, .category {
+    text-decoration: line-through;
+    color: #888;
+  }
+}
+
+// Controls and buttons
 .controls {
   display: flex;
   gap: 10px;
@@ -139,23 +100,19 @@ button {
   background: #2e7d32;
   color: white;
   cursor: pointer;
+  
+  &:hover { background: #2c6e39; }
+  &.completed {
+    background: #388e3c;
+    &:hover { background: #2e7d32; }
+  }
 }
 
-button:hover {
-  background: #2c6e39;
-}
-
-button.completed {
-  background: #388e3c;
-}
-
-button.completed:hover {
-  background: #2e7d32;
-}
-
+// Progress bar
 .progress-container {
   margin: 1rem 0;
   width: 100%;
+  
   .progress-text {
     text-align: center;
     font-weight: 600;
@@ -168,17 +125,13 @@ button.completed:hover {
     border-radius: 20px;
     height: 20px;
     overflow: hidden;
-    position: relative;
     width: 100%;
     margin-bottom: 10px;
     
     .progress-fill {
-      // background: linear-gradient(45deg, #4CAF50, #8BC34A);
       background-color: #7cb342;
       height: 100%;
       transition: width 0.3s ease;
-      position: relative;
-      width: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -192,11 +145,7 @@ button.completed:hover {
   }
 }
 
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
+// Typography
 h1 {
   color: #2e7d32;
   margin-bottom: 0.5rem;
@@ -207,14 +156,8 @@ p {
   font-size: 1.2rem;
 }
 
+// Form styles
 .form-container {
-  background: white;
-  border-radius: 10px;
-  padding: 25px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.hunt-container {
   background: white;
   border-radius: 10px;
   padding: 25px;
@@ -223,11 +166,13 @@ p {
 
 .form-group {
   margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #33691e;
+  }
 }
 
 .form-title, .list-title {
@@ -235,53 +180,36 @@ p {
   margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #33691e;
-}
-
-input {
-  // width: 100%;
+input, select {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 16px;
-  visibility: visible;
+  
   &:focus {
     outline: none;
     border-color: #7cb342;
   }
 }
 
-select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  &:focus {
-    outline: none;
-    border-color: #7cb342;
-  }
-}
+select { width: 100%; }
 
+// Checkbox group
 .CheckboxGroup {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.CheckboxGroup label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.CheckboxGroup label input {
-  margin-right: 10px;
-  cursor: pointer;
+  
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    
+    input {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
 }
 
 .category-label {
@@ -289,39 +217,37 @@ select {
   margin-bottom: 10px;
 }
 
-.form-group-checkbox {
-  margin-bottom: -10px;
-}
+.form-group-checkbox { margin-bottom: -10px; }
+.generateHunt { margin-top: 20px; }
 
-.generateHunt {
-  margin-top: 20px;
-}
-
+// Modal
 .image-modal {
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  
   .modal-backdrop {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    inset: 0;
     background: rgba(0,0,0,0.5);
     z-index: 1;
   }
+  
   .modal-content {
     position: relative;
     background: #fff;
     border-radius: 12px;
-    padding: 2rem 2rem 1.5rem 2rem;
+    padding: 2rem;
     box-shadow: 0 8px 32px rgba(0,0,0,0.25);
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
     max-width: 90vw;
-    // max-height: 90vh;
+    
     .close-modal {
       position: absolute;
       top: 10px;
@@ -333,23 +259,21 @@ select {
       cursor: pointer;
       z-index: 3;
       transition: color 0.2s;
-      &:hover {
-        color: #d32f2f;
-      }
+      
+      &:hover { color: #d32f2f; }
     }
+    
     .modal-full-image {
-      // width: 50vw;
-      height: auto;
       max-width: 100%;
       max-height: 80vh;
       border-radius: 8px;
       margin-bottom: 1.2rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
       object-fit: contain;
-      aspect-ratio: auto;
       display: block;
       background: #f4f4f4;
     }
+    
     .modal-item-name {
       font-size: 1.5rem;
       font-weight: bold;
@@ -357,6 +281,7 @@ select {
       text-align: center;
       color: #2e7d32;
     }
+    
     .modal-item-description {
       font-size: 1.1rem;
       color: #444;
