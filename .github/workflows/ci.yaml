@@ -24,10 +24,10 @@ jobs:
         run: |
           echo "export const environment = {
             production: true,
-            EMAILJS_SERVICE_ID: '${{ env.EMAILJS_SERVICE_ID }}',
-            EMAILJS_TEMPLATE_ID: '${{ env.EMAILJS_TEMPLATE_ID }}',
-            EMAILJS_USER_ID: '${{ env.EMAILJS_USER_ID }}'
-          };" > ./src/environments/environment.prod.ts
+            EMAILJS_SERVICE_ID: '${{ vars.EMAILJS_SERVICE_ID }}',
+            EMAILJS_TEMPLATE_ID: '${{ vars.EMAILJS_TEMPLATE_ID }}',
+            EMAILJS_USER_ID: '${{ vars.EMAILJS_USER_ID }}'
+          };" > ./src/environments/environment.prod.ts`
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
