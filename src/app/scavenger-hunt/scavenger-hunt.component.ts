@@ -59,28 +59,28 @@ export class ScavengerHuntComponent implements OnInit {
     // Return appropriate image based on season and time of day
     const images = {
       spring: {
-        morning: '/assets/images/landings/oaks-spring.jpg',
-        afternoon: '/assets/images/landings/road-forest-spring.jpg',
-        evening: '/assets/images/landings/forest-summer.jpg',
-        night: '/assets/images/landings/green-forest.jpg'
+        morning: '/assets/images/landings/seasonal/spring-solitary-morning-forest.jpg',
+        afternoon: '/assets/images/landings/seasonal/spring-road-forest.jpg',
+        evening: '/assets/images/landings/seasonal/spring-morning-road-forest.jpg',
+        night: '/assets/images/landings/seasonal/summer-evening-road-forest.jpg'
       },
       summer: {
-        morning: '/assets/images/landings/forest-summer.jpg',
-        afternoon: '/assets/images/landings/oaks-spring.jpg',
-        evening: '/assets/images/landings/road-forest-spring.jpg',
-        night: '/assets/images/landings/larch-valley.jpg'
+        morning: '/assets/images/landings/seasonal/fall-morning-road-forest.jpg',
+        afternoon: '/assets/images/landings/seasonal/fall-noon-road-forest.jpg',
+        evening: '/assets/images/landings/seasonal/summer-evening-road-forest.jpg',
+        night: '/assets/images/landings/seasonal/fall-night-road-forest.jpg'
       },
       fall: {
-        morning: '/assets/images/landings/forest-fall.jpg',
-        afternoon: '/assets/images/landings/road-forest-fall.jpg',
-        evening: '/assets/images/landings/oaks-forest.jpg',
-        night: '/assets/images/landings/dead-forest.jpg'
+        morning: '/assets/images/landings/seasonal/fall-morning-road-forest.jpg',
+        afternoon: '/assets/images/landings/seasonal/fall-noon-road-forest.jpg',
+        evening: '/assets/images/landings/seasonal/fall-foggy-road-forest.jpg',
+        night: '/assets/images/landings/seasonal/fall-night-road-forest.jpg'
       },
       winter: {
-        morning: '/assets/images/landings/forest-winter.jpg',
-        afternoon: '/assets/images/landings/snow-lake.jpg',
-        evening: '/assets/images/landings/snowy-forest.jpg',
-        night: '/assets/images/landings/dead-forest.jpg'
+        morning: '/assets/images/landings/seasonal/winter-morning-road-forest.jpg',
+        afternoon: '/assets/images/landings/seasonal/winter-solitary-forest.jpg',
+        evening: '/assets/images/landings/seasonal/fall-morning-road-forest.jpg',
+        night: '/assets/images/landings/seasonal/winter-morning-road-forest.jpg'
       }
     };
 
