@@ -1,3 +1,5 @@
+@import '../../../../src/styles/shared';
+
 // Base styles
 .scavenger-hunt {
   max-width: 800px;
@@ -9,18 +11,15 @@
 
 // Hunt container and items
 .hunt-container {
+  @include card;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  background: white;
-  border-radius: 10px;
-  padding: 25px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .items-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin-bottom: 30px;
 }
@@ -30,13 +29,13 @@
   display: flex;
   align-items: center;
   padding: 15px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid $border-light;
   transition: all 0.2s;
   cursor: pointer;
 
   &:hover {
     background: #e8f5e9;
-    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.12);
+    box-shadow: 0 4px 12px rgba($primary, 0.12);
     transform: translateY(-2px) scale(1.01);
   }
 }
@@ -46,7 +45,7 @@
   height: 60px;
   object-fit: cover;
   border-radius: 8px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid $border-light;
 }
 
 .item-content {
@@ -55,7 +54,7 @@
   flex-grow: 1;
   gap: 15px;
   
-  h3 { margin: 0 0 0.5rem 0; }
+  h3 { margin: 0 0 0.5rem; }
   p { margin: 0.5rem 0; }
 }
 
@@ -72,17 +71,17 @@
   margin-left: 10px;
 }
 
-.plant-category { background-color: #a5d6a7; }
-.animal-category { background-color: #ffcc80; }
-.insect-category { background-color: #90caf9; }
+.plant-category { background: #a5d6a7; }
+.animal-category { background: #ffcc80; }
+.insect-category { background: #90caf9; }
 
 // Completed states
 .completed-item {
-  background-color: #f1f8e9;
+  background: #f1f8e9;
   
   .item-name, .item-description, .category {
     text-decoration: line-through;
-    color: #888;
+    color: $text-muted;
   }
 }
 
@@ -93,20 +92,7 @@
   margin-top: 10px;
 }
 
-button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  background: #2e7d32;
-  color: white;
-  cursor: pointer;
-  
-  &:hover { background: #2c6e39; }
-  &.completed {
-    background: #388e3c;
-    &:hover { background: #2e7d32; }
-  }
-}
+button { @include button; }
 
 // Progress bar
 .progress-container {
@@ -116,7 +102,7 @@ button {
   .progress-text {
     text-align: center;
     font-weight: 600;
-    color: #33691e;
+    color: $primary;
     margin-bottom: 10px;
   }
   
@@ -129,15 +115,15 @@ button {
     margin-bottom: 10px;
     
     .progress-fill {
-      background-color: #7cb342;
+      background: $primary-light;
       height: 100%;
-      transition: width 0.3s ease;
+      transition: width 0.3s;
       display: flex;
       align-items: center;
       justify-content: center;
       
       span {
-        color: white;
+        color: $white;
         font-size: 0.9rem;
         font-weight: 500;
       }
@@ -147,22 +133,17 @@ button {
 
 // Typography
 h1 {
-  color: #2e7d32;
+  color: $primary;
   margin-bottom: 0.5rem;
 }
 
 p {
-  color: #666;
+  color: $text-muted;
   font-size: 1.2rem;
 }
 
 // Form styles
-.form-container {
-  background: white;
-  border-radius: 10px;
-  padding: 25px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+.form-container { @include card; }
 
 .form-group {
   margin-bottom: 20px;
@@ -171,27 +152,16 @@ p {
     display: block;
     margin-bottom: 5px;
     font-weight: 600;
-    color: #33691e;
+    color: $primary;
   }
 }
 
 .form-title, .list-title {
-  color: #2e7d32;
+  color: $primary;
   margin-bottom: 20px;
 }
 
-input, select {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
-  
-  &:focus {
-    outline: none;
-    border-color: #7cb342;
-  }
-}
-
+input, select { @include form-input; }
 select { width: 100%; }
 
 // Checkbox group
@@ -217,7 +187,12 @@ select { width: 100%; }
   margin-bottom: 10px;
 }
 
-.form-group-checkbox { margin-bottom: -10px; }
+.form-group-checkbox {
+  input[type="checkbox"] {
+    visibility: visible;
+  }
+  margin-bottom: -10px;   
+}
 .generateHunt { margin-top: 20px; }
 
 // Modal
@@ -232,16 +207,13 @@ select { width: 100%; }
   .modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.5);
+    background: rgba($black, 0.5);
     z-index: 1;
   }
   
   .modal-content {
+    @include card;
     position: relative;
-    background: #fff;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
     z-index: 2;
     display: flex;
     flex-direction: column;
@@ -255,9 +227,8 @@ select { width: 100%; }
       background: none;
       border: none;
       font-size: 2rem;
-      color: #888;
+      color: $text-muted;
       cursor: pointer;
-      z-index: 3;
       transition: color 0.2s;
       
       &:hover { color: #d32f2f; }
@@ -268,7 +239,7 @@ select { width: 100%; }
       max-height: 80vh;
       border-radius: 8px;
       margin-bottom: 1.2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      box-shadow: 0 2px 8px rgba($black, 0.15);
       object-fit: contain;
       display: block;
       background: #f4f4f4;
@@ -279,12 +250,12 @@ select { width: 100%; }
       font-weight: bold;
       margin-bottom: 0.5rem;
       text-align: center;
-      color: #2e7d32;
+      color: $primary;
     }
     
     .modal-item-description {
       font-size: 1.1rem;
-      color: #444;
+      color: $text-dark;
       text-align: center;
       margin-bottom: 0.5rem;
     }
