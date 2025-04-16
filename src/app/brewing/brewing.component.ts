@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { FooterComponent } from "../components/footer/footer.component";
 import { LandingComponent } from "../components/landing/landing.component";
+import { BeerRecipeComponent } from "./beer-recipe/beer-recipe.component";
 
 @Component({
   selector: 'brewing',
@@ -10,6 +11,7 @@ import { LandingComponent } from "../components/landing/landing.component";
   imports: [
     LandingComponent,
     FooterComponent,
+    BeerRecipeComponent
   ],
   standalone: true
 })

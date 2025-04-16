@@ -1,2 +1,34 @@
-<landing greeting="Looking for a cold one?" message="Sorry the page/brew is not finished yet check back later." noticeButton="Request a Brew" imageId="/assets/images/landings/larch_valley.jpg"/>
-<footerComp/>
+
+<div class="brewing-page">
+  <landing greeting="Welcome to the Brewery" message="Explore my homebrewing adventures and recipes" noticeButton="Request a Brew" imageId="/assets/images/landings/larch_valley.jpg"/>
+  
+  <div class="recipes-container">
+    <app-beer-recipe
+      name="Canada Sap Ale"
+      imageUrl="/assets/images/beers/CanadaSapAle_Emblem.jpg"
+      [malts]="['Munich Malt', 'ESB Pale Malt', 'Melanoidin','Oats', 'Caraaroma', 'Crystal 65']"
+      [hops]="['Glacier', 'Vojvodina', 'Barbe Rouge']"
+      yeast="London ESB Ale (Wyeast 1968)"
+      [adjuncts]="['Maple Syrup']"
+      [abv]="6.2"
+      [og]="1.066"
+      [fg]="1.019"
+      [srm]="24"
+      [ibu]="30"
+      [buGu]="0.46"
+      description="Sit back at the Cabane Au Sucre and enjoy a maple ale."
+    ></app-beer-recipe>
+    <!--
+    [awards]="[
+      {
+        name: 'Best IPA',
+        competition: 'Local Homebrew Competition',
+        year: 2024,
+        place: '1st Place'
+      }
+    ]"
+    -->
+  </div>
+
+  <footerComp/>
+</div>

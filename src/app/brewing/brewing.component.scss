@@ -26,3 +26,32 @@ $background-color_1: #267df4;
     background-color: $background-color_1;
   }
 }
+
+.brewing-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-full {
+  flex: 0 0 auto;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.landing-full > * {
+  flex: 1 1 100%;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipes-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}

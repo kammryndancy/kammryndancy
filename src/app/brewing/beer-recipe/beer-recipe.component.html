@@ -1,0 +1,96 @@
+<div class="beer-recipe">
+  <div class="recipe-header">
+    <h2>{{ name }}</h2>
+  </div>
+  <div class="recipe-top">
+    <div class="beer-image">
+      <img [src]="imageUrl" [alt]="name" />
+    </div>
+    <div class="recipe-stats">
+      <div class="stat">
+        <span class="label">ABV</span>
+        <div class="scale-bar">
+          <div class="scale-fill" [style.width.%]="getScalePercent(abv, 0, 15)"></div>
+          <span class="scale-value">{{ abv | number:'1.1-1' }}%</span>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="label">OG</span>
+        <div class="scale-bar">
+          <div class="scale-fill" [style.width.%]="getScalePercent(og, 1.030, 1.120)"></div>
+          <span class="scale-value">{{ og | number:'1.3-3' }}</span>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="label">FG</span>
+        <div class="scale-bar">
+          <div class="scale-fill" [style.width.%]="getScalePercent(fg, 0.990, 1.040)"></div>
+          <span class="scale-value">{{ fg | number:'1.3-3' }}</span>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="label">SRM</span>
+        <div class="scale-bar">
+          <div class="scale-fill" [ngStyle]="{'width.%': getScalePercent(srm, 1, 40), 'background': getSrmColor()}" ></div>
+          <span class="scale-value">{{ srm | number:'1.0-0' }}</span>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="label">IBU</span>
+        <div class="scale-bar">
+          <div class="scale-fill ibu-scale-fill" [style.width.%]="getScalePercent(ibu, 0, 120)"></div>
+          <span class="scale-value">{{ ibu | number:'1.0-0' }}</span>
+        </div>
+      </div>
+      <div class="stat">
+        <span class="label">BU/GU</span>
+        <div class="scale-bar">
+          <div class="scale-fill bugu-scale-fill" [style.width.%]="getScalePercent(buGu, 0, 1.5)"></div>
+          <span class="scale-value">{{ buGu | number:'1.2-2' }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="recipe-description">
+    {{ description }}
+  </div>
+
+  <div class="recipe-ingredients">
+    <div class="ingredient-section">
+      <h3>Malts</h3>
+      <ul>
+        <li *ngFor="let malt of malts">{{ malt }}</li>
+      </ul>
+    </div>
+    <div class="ingredient-section">
+      <h3>Hops</h3>
+      <ul>
+        <li *ngFor="let hop of hops">{{ hop }}</li>
+      </ul>
+    </div>
+    <div class="ingredient-section">
+      <h3>Yeast</h3>
+      <p>{{ yeast }}</p>
+    </div>
+    <div class="ingredient-section" *ngIf="adjuncts?.length">
+      <h3>Adjuncts</h3>
+      <ul>
+        <li *ngFor="let adjunct of adjuncts">{{ adjunct }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="recipe-awards" *ngIf="awards?.length">
+    <h3>Awards</h3>
+    <div class="awards-grid">
+      <div class="award" *ngFor="let award of awards">
+        <div class="award-medal">🏅</div>
+        <div class="award-details">
+          <h4>{{ award.name }}</h4>
+          <p>{{ award.competition }} ({{ award.year }}) <span *ngIf="award.place">- {{ award.place }}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

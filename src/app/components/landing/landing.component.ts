@@ -17,15 +17,16 @@ export class LandingComponent {
   @Input() imageId: string | undefined;
   @Input() textColor: string | null = '#ffffff'; // Default to white text
 
-  AddBackgroundCssStyle(imageId: String | undefined) {
-    let CssStyles = {
+  AddBackgroundCssStyle(imageId: string | undefined): { [key: string]: string } {
+    let CssStyles: { [key: string]: string } = {
       'background': 'url(/assets/images/green-forest.jpg) no-repeat center / cover'
-    }
+    };
     if (imageId != null) {
       CssStyles = {
-        'background': 'url('+ imageId +') no-repeat center / cover'
-      }
+        'height': '100vh',
+        'background': 'url(' + imageId + ') no-repeat center / cover'
+      };
     }
-    return CssStyles
+    return CssStyles;
   }
 }

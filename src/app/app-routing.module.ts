@@ -13,57 +13,60 @@ import { DndComponent } from "./dnd/dnd.component";
 import { PhotographyComponent } from "./photography/photography.component";
 import { ScavengerHuntComponent } from "./scavenger-hunt/scavenger-hunt.component";
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: 'roaster',
-    component: RoasterComponent
+    loadComponent: () => import('./roaster/roaster.component').then(m => m.RoasterComponent)
   },
   {
     path: 'spirits',
-    component: SpiritsComponent
+    loadComponent: () => import('./spirits/spirits.component').then(m => m.SpiritsComponent)
   },
   {
     path: 'woodwork',
-    component: WoodworkingComponent
+    loadComponent: () => import('./woodwork/woodworking.component').then(m => m.WoodworkingComponent)
   },
   {
     path: 'brewing',
-    component: BrewingComponent
+    loadComponent: () => import('./brewing/brewing.component').then(m => m.BrewingComponent)
   },
   {
     path: 'home',
-    component: HomeComponent
+    loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)
   },
   {
     path: 'withaerstice',
-    component: DndComponent
+    loadComponent: () => import('./dnd/dnd.component').then(m => m.DndComponent)
   },
   {
     path: 'blacksheep',
-    component: DndComponent
+    loadComponent: () => import('./dnd/dnd.component').then(m => m.DndComponent)
   },
   {
     path: 'dnd',
-    component: DndComponent
+    loadComponent: () => import('./dnd/dnd.component').then(m => m.DndComponent)
   },
   {
     path: 'photography',
-    component: PhotographyComponent
+    loadComponent: () => import('./photography/photography.component').then(m => m.PhotographyComponent)
   },
   {
     path: 'scavenger-hunt',
-    component: ScavengerHuntComponent
+    loadComponent: () => import('./scavenger-hunt/scavenger-hunt.component').then(m => m.ScavengerHuntComponent)
   },
-  { path: '',   redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  { 
+    path: '', 
+    redirectTo: '/home', 
+    pathMatch: 'full' 
+  },
+  { 
+    path: '**', 
+    loadComponent: () => import('./page-not-found/page-not-found.component').then(m => m.PageNotFoundComponent) 
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,
-    {
-      enableTracing: false, // <-- debugging purposes only
-      preloadingStrategy: SelectivePreloadingStrategyService,
-    })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
