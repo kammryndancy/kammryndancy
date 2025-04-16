@@ -27,7 +27,7 @@ jobs:
             EMAILJS_SERVICE_ID: '${{ vars.EMAILJS_SERVICE_ID }}',
             EMAILJS_TEMPLATE_ID: '${{ vars.EMAILJS_TEMPLATE_ID }}',
             EMAILJS_USER_ID: '${{ vars.EMAILJS_USER_ID }}'
-          };" > ./src/environments/environment.prod.ts`
+          };" > ./src/environments/environment.prod.ts
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
