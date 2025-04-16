@@ -1,15 +1,15 @@
 @import '../../../../src/styles/shared';
 
-// Base styles
 .scavenger-hunt {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.content, .hunt-container { width: 100%; }
+.content, .hunt-container {
+  width: 100%;
+}
 
-// Hunt container and items
 .hunt-container {
   @include card;
   display: flex;
@@ -24,7 +24,6 @@
   margin-bottom: 30px;
 }
 
-// Item card styles
 .item-card {
   display: flex;
   align-items: center;
@@ -32,7 +31,6 @@
   border-bottom: 1px solid $border-light;
   transition: all 0.2s;
   cursor: pointer;
-
   &:hover {
     background: #e8f5e9;
     box-shadow: 0 4px 12px rgba($primary, 0.12);
@@ -53,9 +51,14 @@
   align-items: center;
   flex-grow: 1;
   gap: 15px;
-  
-  h3 { margin: 0 0 0.5rem; }
-  p { margin: 0.5rem 0; }
+}
+
+.item-content h3 {
+  margin: 0 0 0.5rem;
+}
+
+.item-content p {
+  margin: 0.5rem 0;
 }
 
 .item-name {
@@ -63,7 +66,6 @@
   flex-grow: 1;
 }
 
-// Categories
 .category {
   padding: 4px 8px;
   border-radius: 4px;
@@ -71,67 +73,75 @@
   margin-left: 10px;
 }
 
-.plant-category { background: #a5d6a7; }
-.animal-category { background: #ffcc80; }
-.insect-category { background: #90caf9; }
-
-// Completed states
-.completed-item {
-  background: #f1f8e9;
-  
-  .item-name, .item-description, .category {
-    text-decoration: line-through;
-    color: $text-muted;
-  }
+.plant-category {
+  background: #a5d6a7;
 }
 
-// Controls and buttons
+.animal-category {
+  background: #ffcc80;
+}
+
+.insect-category {
+  background: #90caf9;
+}
+
+.completed-item {
+  background: #f1f8e9;
+}
+
+.completed-item .item-name,
+.completed-item .item-description,
+.completed-item .category {
+  text-decoration: line-through;
+  color: $text-muted;
+}
+
 .controls {
   display: flex;
   gap: 10px;
   margin-top: 10px;
 }
 
-button { @include button; }
+button {
+  @include button;
+}
 
-// Progress bar
 .progress-container {
   margin: 1rem 0;
   width: 100%;
-  
-  .progress-text {
-    text-align: center;
-    font-weight: 600;
-    color: $primary;
-    margin-bottom: 10px;
-  }
-  
-  .progress-bar {
-    background: #f0f0f0;
-    border-radius: 20px;
-    height: 20px;
-    overflow: hidden;
-    width: 100%;
-    margin-bottom: 10px;
-    
-    .progress-fill {
-      background: $primary-light;
-      height: 100%;
-      transition: width 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      
-      span {
-        color: $white;
-        font-size: 0.9rem;
-        font-weight: 500;
-      }
-    }
-  }
 }
 
-// Typography
+.progress-container .progress-text {
+  text-align: center;
+  font-weight: 600;
+  color: $primary;
+  margin-bottom: 10px;
+}
+
+.progress-container .progress-bar {
+  background: #f0f0f0;
+  border-radius: 20px;
+  height: 20px;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.progress-container .progress-bar .progress-fill {
+  background: $primary-light;
+  height: 100%;
+  transition: width 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-container .progress-bar .progress-fill span {
+  color: $white;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
 h1 {
   color: $primary;
   margin-bottom: 0.5rem;
@@ -142,44 +152,51 @@ p {
   font-size: 1.2rem;
 }
 
-// Form styles
-.form-container { @include card; }
+.form-container {
+  @include card;
+}
 
 .form-group {
   margin-bottom: 20px;
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: $primary;
-  }
 }
 
-.form-title, .list-title {
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: $primary;
+}
+
+.form-title,
+.list-title {
   color: $primary;
   margin-bottom: 20px;
 }
 
-input, select { @include form-input; }
-select { width: 100%; }
+input,
+select {
+  @include form-input;
+}
 
-// Checkbox group
+select {
+  width: 100%;
+}
+
 .CheckboxGroup {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  
-  label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    
-    input {
-      margin-right: 10px;
-      cursor: pointer;
-    }
-  }
+}
+
+.CheckboxGroup label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.CheckboxGroup label input {
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .category-label {
@@ -191,11 +208,13 @@ select { width: 100%; }
   input[type="checkbox"] {
     visibility: visible;
   }
-  margin-bottom: -10px;   
+  margin-bottom: -10px;
 }
-.generateHunt { margin-top: 20px; }
 
-// Modal
+.generateHunt {
+  margin-top: 20px;
+}
+
 .image-modal {
   position: fixed;
   inset: 0;
@@ -203,61 +222,63 @@ select { width: 100%; }
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  
-  .modal-backdrop {
-    position: absolute;
-    inset: 0;
-    background: rgba($black, 0.5);
-    z-index: 1;
-  }
-  
-  .modal-content {
-    @include card;
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 90vw;
-    
-    .close-modal {
-      position: absolute;
-      top: 10px;
-      right: 16px;
-      background: none;
-      border: none;
-      font-size: 2rem;
-      color: $text-muted;
-      cursor: pointer;
-      transition: color 0.2s;
-      
-      &:hover { color: #d32f2f; }
-    }
-    
-    .modal-full-image {
-      max-width: 100%;
-      max-height: 80vh;
-      border-radius: 8px;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 2px 8px rgba($black, 0.15);
-      object-fit: contain;
-      display: block;
-      background: #f4f4f4;
-    }
-    
-    .modal-item-name {
-      font-size: 1.5rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      text-align: center;
-      color: $primary;
-    }
-    
-    .modal-item-description {
-      font-size: 1.1rem;
-      color: $text-dark;
-      text-align: center;
-      margin-bottom: 0.5rem;
-    }
-  }
+}
+
+.image-modal .modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba($black, 0.5);
+  z-index: 1;
+}
+
+.image-modal .modal-content {
+  @include card;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+}
+
+.image-modal .modal-content .close-modal {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: $text-muted;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.image-modal .modal-content .close-modal:hover {
+  color: #d32f2f;
+}
+
+.image-modal .modal-content .modal-full-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 8px rgba($black, 0.15);
+  object-fit: contain;
+  display: block;
+  background: #f4f4f4;
+}
+
+.image-modal .modal-content .modal-item-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  color: $primary;
+}
+
+.image-modal .modal-content .modal-item-description {
+  font-size: 1.1rem;
+  color: $text-dark;
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
