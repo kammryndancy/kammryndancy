@@ -9,7 +9,8 @@
     "test": "ng test",
     "build:prod": "ng build --configuration production",
     "test:headless": "ng test --watch=false --browsers=ChromeHeadless",
-    "add": "ng add @angular/material"
+    "add": "ng add @angular/material",
+    "start:prod": "ng serve --configuration production"
   },
   "private": true,
   "dependencies": {
