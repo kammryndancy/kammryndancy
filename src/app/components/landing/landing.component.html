@@ -3,7 +3,11 @@
     <div class="landing-text">
       <h1>{{greeting}}</h1>
       <p>{{message}}</p>
-      <a class="btn btn-border" [style.color]="textColor || '#ffffff'">{{noticeButton}}</a>
+      <a class="btn btn-border" [style.color]="textColor || '#ffffff'"
+         href="#"
+         (click)="$event.preventDefault(); noticeButtonClick.emit()">
+        {{noticeButton}}
+      </a>
     </div>
   </div>
 </div>

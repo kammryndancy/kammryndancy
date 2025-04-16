@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 interface Award {
   name: string;
@@ -13,7 +14,7 @@ interface Award {
   templateUrl: './beer-recipe.component.html',
   styleUrls: ['./beer-recipe.component.scss'],
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, SafeUrlPipe]
 })
 export class BeerRecipeComponent {
   @Input() name: string = '';
@@ -30,6 +31,7 @@ export class BeerRecipeComponent {
   @Input() ibu: number = 0;
   @Input() buGu: number = 0;
   @Input() awards: Award[] = [];
+  @Input() youtubeUrl: string | null = null;
 
   getSrmColor(): string {
     // SRM to color conversion
@@ -41,13 +43,24 @@ export class BeerRecipeComponent {
       '#660D00', '#5E0B00', '#5A0A02', '#600903', '#520907', '#4C0505', '#470606',
       '#440607', '#3F0708', '#3B0607', '#3A070B', '#36080A'
     ];
-    const index = Math.min(Math.floor(this.srm), srmColors.length - 1);
-    return srmColors[index];
+    return srmColors[Math.max(0, Math.min(this.srm - 1, srmColors.length - 1))];
   }
 
   getScalePercent(value: number, min: number, max: number): number {
-    // Clamp value within min/max
     const clamped = Math.max(min, Math.min(value, max));
     return ((clamped - min) / (max - min)) * 100;
+  }
+
+  get youtubeEmbedUrl(): string | null {
+    if (!this.youtubeUrl) return null;
+    // If already an embed URL, return as-is
+    if (this.youtubeUrl.includes('youtube.com/embed/')) return this.youtubeUrl;
+    // Extract video ID from various YouTube URL formats
+    const match = this.youtubeUrl.match(/[?&]v=([\w-]{11})/) || this.youtubeUrl.match(/youtu\.be\/([\w-]{11})/);
+    const videoId = match ? match[1] : null;
+    if (videoId) {
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+    return this.youtubeUrl;
   }
 }

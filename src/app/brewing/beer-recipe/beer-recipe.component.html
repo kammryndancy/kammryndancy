@@ -3,14 +3,14 @@
     <h2>{{ name }}</h2>
   </div>
   <div class="recipe-top">
-    <div class="beer-image">
+    <div class="beer-image" *ngIf="imageUrl">
       <img [src]="imageUrl" [alt]="name" />
     </div>
-    <div class="recipe-stats">
+    <div class="recipe-stats" [ngClass]="{'full-width': !imageUrl}">
       <div class="stat">
         <span class="label">ABV</span>
         <div class="scale-bar">
-          <div class="scale-fill" [style.width.%]="getScalePercent(abv, 0, 15)"></div>
+          <div class="scale-fill" [style.width.%]="getScalePercent(abv, 2, 15)"></div>
           <span class="scale-value">{{ abv | number:'1.1-1' }}%</span>
         </div>
       </div>
@@ -78,6 +78,18 @@
       <ul>
         <li *ngFor="let adjunct of adjuncts">{{ adjunct }}</li>
       </ul>
+    </div>
+  </div>
+
+  <div *ngIf="youtubeEmbedUrl" class="recipe-video">
+    <div class="video-container">
+      <iframe
+        [src]="youtubeEmbedUrl | safeUrl"
+        title="Beer Video"
+        frameborder="0"
+        allowfullscreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      ></iframe>
     </div>
   </div>
 

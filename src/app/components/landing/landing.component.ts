@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NgStyle } from "@angular/common";
 
 @Component({
@@ -16,6 +16,7 @@ export class LandingComponent {
   @Input() noticeButton: string | undefined;
   @Input() imageId: string | undefined;
   @Input() textColor: string | null = '#ffffff'; // Default to white text
+  @Output() noticeButtonClick = new EventEmitter<void>();
 
   AddBackgroundCssStyle(imageId: string | undefined): { [key: string]: string } {
     let CssStyles: { [key: string]: string } = {

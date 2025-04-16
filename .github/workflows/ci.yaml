@@ -16,6 +16,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-west-2
 
+      - name: Generate environment.prod.ts
+        run: |
+          echo "export const environment = {
+            production: true,
+            EMAILJS_SERVICE_ID: '${{ vars.EMAILJS_SERVICE_ID }}',
+            EMAILJS_TEMPLATE_ID: '${{ vars.EMAILJS_TEMPLATE_ID }}',
+            EMAILJS_USER_ID: '${{ vars.EMAILJS_USER_ID }}'
+          };" > ./src/environments/environment.prod.ts
+
       - name: Checkout
         uses: actions/checkout@v2
 
