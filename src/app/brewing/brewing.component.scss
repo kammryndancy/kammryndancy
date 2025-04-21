@@ -100,3 +100,39 @@ $background-color_1: #267df4;
   from { opacity: 0; transform: translateY(-32px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+
+  button {
+    background: #7cb342;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1.1rem;
+    margin: 0 0.1rem;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(38, 125, 244, 0.08);
+  }
+  button.active,
+  button:focus {
+    background: #fff;
+    color: #7cb342;
+    border: 2px solid #7cb342;
+    outline: none;
+  }
+  button[disabled] {
+    background: #e0e0e0;
+    color: #aaa;
+    cursor: not-allowed;
+    border: none;
+  }
+}

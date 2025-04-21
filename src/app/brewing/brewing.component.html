@@ -15,109 +15,32 @@
   </div>
 
   <div class="recipes-container">
-    <app-beer-recipe
-    name="Alsace Saison"
-    youtubeUrl="https://www.youtube.com/watch?v=3rULfs9GeCk"
-    [malts]="['Pilsner 2-Row', 'Flaked Wheat', 'Wheat Malt','Rye Malt', 'Chit Malt', 'Caraaroma']"
-    [hops]="['Hallertau', 'Hallertau Blanc', 'Barbe Rouge']"
-    yeast="French Saison Ale (M29)"
-    [abv]="6.3"
-    [og]="1.055"
-    [fg]="1.007"
-    [srm]="9"
-    [ibu]="28"
-    [buGu]="0.50"
-    description="A dry, crisp, and refreshing saison, Alsace Saison is a perfect example of a French Saison. This beer has a malt and caramel character, and a bitterness that balances the sweetness of the malt."
-  ></app-beer-recipe>
-    <app-beer-recipe
-      name="Wild Fire Ale"
-      youtubeUrl="https://www.youtube.com/watch?v=lWIohOInQY8"
-      [malts]="['Vienna Malt', 'ESB Pale Malt', 'Cherry Smoked Malt','Beechwood Smoked Malt', 'Rye Malt', 'Pale Chocolate', 'Crystal 120']"
-      [hops]="['Hallertau', 'East Kent Goldings', 'Amarillo']"
-      yeast="Empire Ale (M15)"
-      [abv]="5.9"
-      [og]="1.059"
-      [fg]="1.014"
-      [srm]="24"
-      [ibu]="24"
-      [buGu]="0.41"
-      description="Rauchbier made to emulate the smoke air of Alberta during the wildfire season. More than a hint of smoke, this beer has a malt and caramel character, and a bitterness that balances the sweetness of the malt."
-    ></app-beer-recipe>
-    <app-beer-recipe
-    name="Canada Sap Ale"
-    imageUrl="/assets/images/beers/CanadaSapAle_Emblem.jpg"
-    [malts]="['Munich Malt', 'ESB Pale Malt', 'Melanoidin','Oats', 'Caraaroma', 'Crystal 60']"
-    [hops]="['Glacier', 'Vojvodina', 'Barbe Rouge']"
-    yeast="London ESB Ale (WY1968)"
-    [adjuncts]="['Maple Syrup']"
-    [abv]="6.2"
-    [og]="1.066"
-    [fg]="1.019"
-    [srm]="24"
-    [ibu]="30"
-    [buGu]="0.46"
-    description="A sweet, caramel malt ale with a touch of maple syrup, Canada Sap Ale is a perfect example of a Canadian-style ale. This beer has a malt and caramel character, and a bitterness that balances the sweetness of the malt. Sit back at the Cabane Au Sucre and enjoy a maple ale."
-  ></app-beer-recipe>
-    <app-beer-recipe
-    name="Archie Ale"
-    imageUrl="/assets/images/beers/ArchieAle.jpg"
-    [malts]="['ESB Pale Malt', 'Vienna Malt','Rye Malt', 'Cherry Smoked Malt', 'Dark Crystal', 'Medium Crystal', 'Chocolate Rye']"
-    [hops]="['Willamette', 'Goldings', 'Fuggles']"
-    yeast="London Ale (WLP013)"
-    [abv]="6.4"
-    [og]="1.056"
-    [fg]="1.007"
-    [srm]="16"
-    [ibu]="24"
-    [buGu]="0.43"
-    description="Brewed with Kieran Macauley to serve at the his wedding to Claudia Sacco, named after their dog Archie. This beer is robust Irish Red Ale with a malt and caramel character, and a bitterness that balances the sweetness of the malt."
-  ></app-beer-recipe>
-  <app-beer-recipe
-  name="Heavy K Ale"
-  imageUrl="/assets/images/beers/Macauley_Ale.jpg"
-  [malts]="['Munich Malt', 'Melanoidin','Medium Crystal', 'Caraaroma', 'Chit Malt']"
-  [hops]="['Hallertauer Mittelfrueh', 'Hallertau Blanc']"
-  yeast="German Ale/Kolsch (WLP029)"
-  [abv]="5.3"
-  [og]="1.051"
-  [fg]="1.011"
-  [srm]="22"
-  [ibu]="13"
-  [buGu]="0.25"
-  description="Brewed with Kieran Macauley to serve at the his birthday, sharing his nickname. A loose interpretation of a Munich Dunkel, this beer has a rich, malty character with a subtle caramel note."
-></app-beer-recipe>
-<app-beer-recipe
-name="Whinging Sipper"
-imageUrl="/assets/images/beers/WhingingSipper.JPG"
-[malts]="['Wheat Malt', 'ESB Pale Malt', '2-Row', 'Melanoidin', 'Flaked Wheat', 'Rice Hulls']"
-[hops]="['Eclipse', 'Hallertau Blanc', 'Lotus']"
-yeast="French Saison (WY3711)"
-[abv]="10.9"
-[og]="1.100"
-[fg]="1.017"
-[srm]="14"
-[ibu]="43"
-[buGu]="0.43"
-description="A wheatwine that has a rich, malty character with a subtle caramel note. This beer is a big one, with a malt and caramel character, and a bitterness that balances the sweetness of the malt."
-[awards]="[
-{
-  name: 'Strong Ale',
-  competition: 'Cowtown Yeast Wrangler Roundup',
-  year: 2024,
-  place: '2nd Place'
-}
-]"
-></app-beer-recipe>
-    <!--
-    [awards]="[
-      {
-        name: 'Best IPA',
-        competition: 'Local Homebrew Competition',
-        year: 2024,
-        place: '1st Place'
-      }
-    ]"
-    -->
+    <ng-container *ngFor="let recipe of paginatedRecipes">
+      <app-beer-recipe
+        [name]="recipe.name"
+        [youtubeUrl]="recipe.youtubeUrl || null"
+        [imageUrl]="recipe.imageUrl || ''"
+        [malts]="recipe.malts"
+        [hops]="recipe.hops"
+        [yeast]="recipe.yeast"
+        [adjuncts]="recipe.adjuncts || []"
+        [abv]="recipe.abv"
+        [og]="recipe.og"
+        [fg]="recipe.fg"
+        [srm]="recipe.srm"
+        [ibu]="recipe.ibu"
+        [buGu]="recipe.buGu"
+        [description]="recipe.description"
+        [awards]="recipe.awards || []"
+      ></app-beer-recipe>
+    </ng-container>
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      <span *ngFor="let page of [].constructor(totalPages); let idx = index">
+        <button (click)="goToPage(idx + 1)" [class.active]="currentPage === idx + 1">{{ idx + 1 }}</button>
+      </span>
+      <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+    </div>
   </div>
 
   <footerComp/>

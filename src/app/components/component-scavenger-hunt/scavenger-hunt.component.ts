@@ -89,6 +89,11 @@ export class ScavengerHuntComponent {
     });
   }
 
+  resetChecklist() {
+    this.scavengerHuntItems.map((item) => item.completed = false);
+    this.updateProgress();
+  };
+
   openImageModal(image: string, name: string, description: string): void {
     this.selectedImage = image;
     this.selectedName = name;
