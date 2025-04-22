@@ -16,6 +16,7 @@
           <div class="form-group">
             <label for="season">Season</label>
             <select id="season" formControlName="season">
+              <option value="any">Any Season</option>
               <option value="spring">Spring</option>
               <option value="summer">Summer</option>
               <option value="fall">Fall</option>
@@ -82,7 +83,10 @@
           <p class="modal-item-description">{{ selectedDescription }}</p>
         </div>
       </div>
-      <button (click)="resetHunt()">Reset Hunt</button>
+      <div class="button-row">
+        <button (click)="resetChecklist()">Reset Checklist</button>
+        <button (click)="resetHunt()">Generate New Hunt</button>
+      </div>
     </div>
   </div>
 </div>

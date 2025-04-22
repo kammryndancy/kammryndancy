@@ -143,7 +143,7 @@ const natureDatabase: NatureDatabase = {
       { name: 'Holly', image: 'https://images.unsplash.com/photo-1601827008690-4b4e716fd556?auto=format&fit=crop&q=80&w=500', description: 'A type of flowering plant with bright red berries.' },
       { name: 'Pine needle', image: 'https://images.unsplash.com/photo-1739502753947-93a8684a7cdd?auto=format&fit=crop&q=80&w=500', description: 'A long, thin leaf that grows on a coniferous tree.' },
       { name: 'Mistletoe', image: 'https://images.unsplash.com/photo-1668889614652-2e3807c93234?auto=format&fit=crop&q=80&w=500', description: 'A type of flowering plant that grows on other plants.' },
-      { name: 'Dried seed pod', image: 'https://images.unsplash.com//photo-1724879085813-ca4a54689841?auto=format&fit=crop&q=80&w=500', description: 'A seed pod that has dried and opened.' },
+      { name: 'Dried seed pod', image: 'https://images.unsplash.com/photo-1724879085813-ca4a54689841?auto=format&fit=crop&q=80&w=500', description: 'A seed pod that has dried and opened.' },
       { name: 'Pinecone', image: 'https://images.unsplash.com/photo-1510189511704-57f96164f531?auto=format&fit=crop&q=80&w=500', description: 'The reproductive structure of a coniferous tree.' },
       { name: 'Bare tree', image: 'https://images.unsplash.com/photo-1487111023822-2e903e12f6f0?auto=format&fit=crop&q=80&w=500', description: 'A tree that has lost its leaves.' }
     ]

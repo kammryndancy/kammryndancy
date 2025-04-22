@@ -102,6 +102,18 @@
   margin-top: 10px;
 }
 
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+}
+
+.button-row button {
+  margin: 0;
+}
+
 button {
   @include button;
 }
