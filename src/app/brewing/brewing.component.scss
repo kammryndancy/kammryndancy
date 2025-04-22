@@ -52,8 +52,14 @@ $background-color_1: #267df4;
 
 .recipes-container {
   max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 /* Modal Styles */
@@ -103,36 +109,42 @@ $background-color_1: #267df4;
 
 .pagination {
   display: flex;
+  gap: 0.5rem;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0 1rem 0;
+}
+.pagination-arrow {
+  background: #f4f4f4;
+  border: none;
+  color: #333;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  box-shadow: 0 1px 2px rgba(44,62,80,.06);
+}
+.pagination-arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pagination-page {
+  background: #fff;
+  border: 1.5px solid #d3d3d3;
+  color: #7cb342;
+  font-weight: 600;
   font-size: 1.1rem;
-
-  button {
-    background: #7cb342;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 0.5rem 1.1rem;
-    margin: 0 0.1rem;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 1px 4px rgba(38, 125, 244, 0.08);
-  }
-  button.active,
-  button:focus {
-    background: #fff;
-    color: #7cb342;
-    border: 2px solid #7cb342;
-    outline: none;
-  }
-  button[disabled] {
-    background: #e0e0e0;
-    color: #aaa;
-    cursor: not-allowed;
-    border: none;
-  }
+  border-radius: 5px;
+  min-width: 2.2rem;
+  min-height: 2.2rem;
+  padding: 0.2rem 0.6rem;
+  cursor: pointer;
+  transition: background 0.15s, border 0.15s, color 0.15s;
+}
+.pagination-page.active,
+.pagination-page:hover {
+  background: #7cb342;
+  border-color: #7cb342;
+  color: #fff;
 }

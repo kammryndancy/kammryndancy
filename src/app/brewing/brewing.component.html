@@ -15,33 +15,34 @@
   </div>
 
   <div class="recipes-container">
-    <ng-container *ngFor="let recipe of paginatedRecipes">
-      <app-beer-recipe
-        [name]="recipe.name"
-        [youtubeUrl]="recipe.youtubeUrl || null"
-        [imageUrl]="recipe.imageUrl || ''"
-        [malts]="recipe.malts"
-        [hops]="recipe.hops"
-        [yeast]="recipe.yeast"
-        [adjuncts]="recipe.adjuncts || []"
-        [abv]="recipe.abv"
-        [og]="recipe.og"
-        [fg]="recipe.fg"
-        [srm]="recipe.srm"
-        [ibu]="recipe.ibu"
-        [buGu]="recipe.buGu"
-        [description]="recipe.description"
-        [awards]="recipe.awards || []"
-      ></app-beer-recipe>
-    </ng-container>
+    <div *ngIf="loading">Loading recipes...</div>
+    <div *ngIf="error">{{ error }}</div>
+    <app-beer-recipe
+      *ngFor="let recipe of paginatedRecipes"
+      [name]="recipe.name"
+      [imageUrl]="recipe.imageUrl"
+      [description]="recipe.description"
+      [malts]="recipe.malts"
+      [hops]="recipe.hops"
+      [yeast]="recipe.yeast"
+      [adjuncts]="recipe.adjuncts"
+      [abv]="recipe.abv"
+      [og]="recipe.og"
+      [fg]="recipe.fg"
+      [srm]="recipe.srm"
+      [ibu]="recipe.ibu"
+      [buGu]="recipe.buGu"
+      [awards]="recipe.awards"
+      [youtubeUrl]="recipe.youtubeUrl"
+      [recipeUrl]="recipe.recipeUrl"
+    ></app-beer-recipe>
     <div class="pagination" *ngIf="totalPages > 1">
-      <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-      <span *ngFor="let page of [].constructor(totalPages); let idx = index">
-        <button (click)="goToPage(idx + 1)" [class.active]="currentPage === idx + 1">{{ idx + 1 }}</button>
-      </span>
-      <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+      <button class="pagination-arrow" (click)="prevPage()" [disabled]="currentPage === 1">&lt;</button>
+      <ng-container *ngFor="let page of [].constructor(totalPages); let i = index">
+        <button class="pagination-page" (click)="goToPage(i+1)" [class.active]="currentPage === (i+1)">{{ i+1 }}</button>
+      </ng-container>
+      <button class="pagination-arrow" (click)="nextPage()" [disabled]="currentPage === totalPages">&gt;</button>
     </div>
   </div>
-
   <footerComp/>
 </div>
