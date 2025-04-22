@@ -24,5 +24,8 @@ export class KammryndancyApiService {
     return this.http.get(this.apiUrl.replace('/api', '/health'));
   }
 
-  // Add more methods as needed for scavenger hunt, blacklist, etc.
+  // Get scavenger hunt items by filter
+  getScavengerHuntFiltered(params: any): Observable<any> {
+    return this.http.get(`${this.apiUrl}/scavengerhunt/filter`, { params });
+  }
 }

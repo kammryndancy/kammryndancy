@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { generateScavengerHuntItems, ScavengerHuntGeneratorConfig, ScavengerHuntItem } from '../../utils/scavengerHuntGenerator';
+import { KammryndancyApiService } from '../../services/kammryndancy-api.service';
 
 @Component({
   selector: 'component-scavenger-hunt',
@@ -26,7 +27,7 @@ export class ScavengerHuntComponent {
   selectedName: string | null = null;
   selectedDescription: string | null = null;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private api: KammryndancyApiService) {
     this.scavengerHuntForm = this.formBuilder.group({
       userName: [''],
       itemCount: ['5', [Validators.required, Validators.min(1), Validators.max(20)]],
@@ -39,27 +40,27 @@ export class ScavengerHuntComponent {
 
   ngOnInit() {}
 
-  generateHunt() {
+  async generateHunt() {
     if (this.scavengerHuntForm.valid) {
       this.userName = this.scavengerHuntForm.value.userName;
       const formData = this.scavengerHuntForm.value;
-      
-      // Convert form values to proper types for the generator
-      const config: ScavengerHuntGeneratorConfig = {
+
+      // Prepare filter params
+      const params: any = {
         count: parseInt(formData.itemCount || '5'),
         season: formData.season || 'spring',
-        includeAnimals: !!formData.includeAnimals,
-        includePlants: !!formData.includePlants,
-        includeInsects: !!formData.includeInsects
+        animals: formData.includeAnimals,
+        plants: formData.includePlants,
+        insects: formData.includeInsects
       };
-      
-      console.log('Generating hunt with config:', config);
-      const items = generateScavengerHuntItems(config);
-      console.log('Generated items:', items);
-      
-      this.scavengerHuntItems = items;
-      this.isHuntGenerated = true;
-      this.completedCount = 0;
+      try {
+        const items = await this.api.getScavengerHuntFiltered(params).toPromise();
+        this.scavengerHuntItems = items;
+        this.isHuntGenerated = true;
+        this.completedCount = 0;
+      } catch (err) {
+        console.error('Failed to fetch scavenger hunt items:', err);
+      }
     } else {
       console.log('Form is invalid:', this.scavengerHuntForm.errors);
     }
