@@ -3,7 +3,6 @@ $(document).ready(function() {
     var delay=0, setTimeoutConst;
     $('.site-navigation:not(.onclick) .navbar-nav>li.dropdown, .site-navigation:not(.onclick) li.dropdown>ul>li.dropdown').hover(
         function(){
-            console.log('kammryn.dancy');
             var $this = $(this);
             setTimeoutConst = setTimeout(function(){
                 $this.addClass('open').slideDown();
