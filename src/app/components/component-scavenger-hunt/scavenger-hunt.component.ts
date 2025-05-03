@@ -3,8 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { generateScavengerHuntItems, ScavengerHuntGeneratorConfig, ScavengerHuntItem } from '../../utils/scavengerHuntGenerator';
 import { KammryndancyApiService } from '../../services/kammryndancy-api.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
+  
   selector: 'component-scavenger-hunt',
   templateUrl: './scavenger-hunt.component.html',
   styleUrls: ['./scavenger-hunt.component.scss'],
@@ -38,14 +40,31 @@ export class ScavengerHuntComponent {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // On load, check for persisted hunt
+    const huntId = localStorage.getItem('huntId');
+    const finderName = localStorage.getItem('finderName');
+    if (huntId && finderName) {
+      this.api.getPersistentHunt(huntId).subscribe(
+        (hunt) => {
+          this.userName = hunt.finderName;
+          this.scavengerHuntItems = hunt.items;
+          this.isHuntGenerated = true;
+          this.completedCount = hunt.items.filter((item: any) => item.completed).length;
+        },
+        () => {
+          // If not found, clear storage
+          localStorage.removeItem('huntId');
+          localStorage.removeItem('finderName');
+        }
+      );
+    }
+  }
 
   async generateHunt() {
     if (this.scavengerHuntForm.valid) {
       this.userName = this.scavengerHuntForm.value.userName;
       const formData = this.scavengerHuntForm.value;
-
-      // Prepare filter params
       const params: any = {
         count: parseInt(formData.itemCount || '5'),
         season: formData.season || 'spring',
@@ -55,14 +74,31 @@ export class ScavengerHuntComponent {
       };
       try {
         const items = await this.api.getScavengerHuntFiltered(params).toPromise();
-        this.scavengerHuntItems = items;
-        this.isHuntGenerated = true;
-        this.completedCount = 0;
+        // Persist hunt in backend
+        this.api.createPersistentHunt({ finderName: this.userName, items }).subscribe((res) => {
+          localStorage.setItem('huntId', res.huntId);
+          localStorage.setItem('finderName', this.userName);
+          this.scavengerHuntItems = res.hunt.items;
+          this.isHuntGenerated = true;
+          this.completedCount = 0;
+        });
       } catch (err) {
-        console.error('Failed to fetch scavenger hunt items:', err);
+        // handle error
       }
-    } else {
-      console.log('Form is invalid:', this.scavengerHuntForm.errors);
+    }
+  }
+
+  resetHunt() {
+    const huntId = localStorage.getItem('huntId');
+    if (huntId) {
+      this.api.deletePersistentHunt(huntId).subscribe(() => {
+        localStorage.removeItem('huntId');
+        localStorage.removeItem('finderName');
+        this.isHuntGenerated = false;
+        this.scavengerHuntItems = [];
+        this.completedCount = 0;
+        this.userName = '';
+      });
     }
   }
 
@@ -73,21 +109,6 @@ export class ScavengerHuntComponent {
 
   private updateProgress() {
     this.completedCount = this.scavengerHuntItems.filter(item => item.completed).length;
-  }
-
-  resetHunt() {
-    this.isHuntGenerated = false;
-    this.scavengerHuntItems = [];
-    this.completedCount = 0;
-    this.userName = '';
-    this.scavengerHuntForm.reset({
-      userName: '',
-      itemCount: '5',
-      season: 'spring',
-      includeAnimals: true,
-      includePlants: true,
-      includeInsects: true
-    });
   }
 
   resetChecklist() {

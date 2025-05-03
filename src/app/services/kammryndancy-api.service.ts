@@ -28,4 +28,17 @@ export class KammryndancyApiService {
   getScavengerHuntFiltered(params: any): Observable<any> {
     return this.http.get(`${this.apiUrl}/scavengerhunt/filter`, { params });
   }
+
+  // Persistent scavenger hunt API
+  createPersistentHunt(data: { finderName: string, items: any[] }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/persistent-hunt`, data);
+  }
+
+  getPersistentHunt(huntId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/persistent-hunt/${huntId}`);
+  }
+
+  deletePersistentHunt(huntId: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/persistent-hunt/${huntId}`);
+  }
 }

@@ -73,15 +73,15 @@
   margin-left: 10px;
 }
 
-.plant-category {
+.plants-category {
   background: #a5d6a7;
 }
 
-.animal-category {
+.animals-category {
   background: #ffcc80;
 }
 
-.insect-category {
+.insects-category {
   background: #90caf9;
 }
 
@@ -293,4 +293,13 @@ select {
   color: $text-dark;
   text-align: center;
   margin-bottom: 0.5rem;
+}
+
+.item-description {
+  margin-top: 8px;
+  color: #444;
+  font-size: 1rem;
+  @media (max-width: 600px) {
+    display: none;
+  }
 }
