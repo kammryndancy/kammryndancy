@@ -47,3 +47,7 @@ jobs:
       - name: Deploy
         if: success()
         run: aws s3 sync ./dist/kammryndancy s3://kammryndancy.com
+
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} --paths '/*'
