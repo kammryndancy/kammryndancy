@@ -1,4 +1,5 @@
-<footer id="colophon" class="site-footer">
+<footer id="colophon site-footer" class="site-footer">
+    <app-dice *ngIf="isDiceContainerVisible" class="dice-footer-container" (rollComplete)="onDiceRollComplete($event)"></app-dice>
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-4 col-xs-6">
@@ -39,10 +40,10 @@
                 </div>
                 <div class="col-xs-4">
                     <div class="text-right">
-                        <p>© 2023 All Rights Unreserved.  <a href="secret_page"> Look what you found</a></p>
+                        <p> 2025 All Rights Unreserved. <a href="#" class="easter-egg-dice" (click)="toggleDiceContainer($event)">Look what you found!</a></p>
                     </div>
                 </div>
             </div>
         </div>
-    </div><!-- /.copyright -->
+    </div>
 </footer>
