@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { NgIf, NgClass } from '@angular/common';
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { DiceComponent } from '../dice/dice.component';
 
@@ -11,7 +11,8 @@ import { DiceComponent } from '../dice/dice.component';
         RouterLink,
         RouterLinkActive,
         DiceComponent,
-        NgIf
+        NgIf,
+        NgClass
     ],
     standalone: true
 })
@@ -24,14 +25,8 @@ export class FooterComponent {
     }
 
     onDiceRollComplete(result: any) {
-        // Wait 4 seconds after roll is complete, then hide the container
-        console.log('Dice roll complete:', result);
-        console.log('Current dice container visibility:', this.isDiceContainerVisible);
-        
-        // Ensure the method is being called
         setTimeout(() => {
-            console.log('Hiding dice container');
             this.isDiceContainerVisible = false;
-        }, 4000);
+        }, 2000);
     }
 }

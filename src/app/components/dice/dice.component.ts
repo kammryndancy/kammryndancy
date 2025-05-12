@@ -60,15 +60,12 @@ export class DiceComponent implements OnInit, AfterViewInit {
         // Use standard D20 notation
         notation: '1d20'
       };
-
-      console.log('Creating DiceBox with config:', config);
+      
       this.diceBox = new DiceBox(config);
 
       // Initialize the dice box
       this.diceBox.init()
         .then(() => {
-          console.log('DiceBox initialized successfully');
-          // Optionally roll a dice immediately to test
           this.rollDice();
         })
         .catch((error: any) => {
@@ -132,19 +129,15 @@ export class DiceComponent implements OnInit, AfterViewInit {
     }
     
     if (!this.diceBox) {
-      console.log('DiceBox not initialized, attempting to use text-based dice');
       return;
     }
 
     this.isRolling = true;
-    console.log('Rolling a D20...');
     
     try {
       this.diceBox.roll('1d20')
         .then((result: any) => {
-          console.log('Roll result:', result);
           this.isRolling = false;
-          console.log('Emitting rollComplete event');
           this.rollComplete.emit(result);
         })
         .catch((error: any) => {

@@ -1,5 +1,7 @@
 <footer id="colophon site-footer" class="site-footer">
-    <app-dice *ngIf="isDiceContainerVisible" class="dice-footer-container" (rollComplete)="onDiceRollComplete($event)"></app-dice>
+    <app-dice *ngIf="isDiceContainerVisible" 
+    (rollComplete)="onDiceRollComplete($event)"
+    #diceComponent></app-dice>
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-4 col-xs-6">
