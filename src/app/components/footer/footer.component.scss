@@ -161,6 +161,14 @@ a.beer {
     background-color: $color_10;
   }
 }
+a.github {
+  color: $color_8;
+  border-color: $color_8;
+  &:hover {
+    border-color: $color_8;
+    background-color: $color_8;
+  }
+}
 
 /* Dice Component in Footer */
 .dice-footer-container {

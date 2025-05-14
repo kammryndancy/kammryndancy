@@ -42,12 +42,12 @@ export class RoasterComponent {
     {
       name: 'Metal Cooling Tray',
       description: 'Simple barbeque vegetable roaster used as a cooling tray with integrated fan system to rapidly halt the roasting process and preserve bean flavor.',
-      image: '/assets/images/coffee/coffee_colombian_tray.jpg'
+      image: '/assets/images/coffee/coffee_tray.jpg'
     },
     {
       name: 'Natural Gas Stove',
       description: 'A simple natural gas stove used to heat up the roasters steel mesh plate in order to emit infrared heat towards the coffee beans.',
-      image: '/assets/images/coffee/coffee_colombian_tray.jpg'
+      image: '/assets/images/coffee/coffee_chip_out.jpg'
     }
   ];
 
