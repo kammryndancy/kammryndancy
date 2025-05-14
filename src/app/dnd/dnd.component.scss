@@ -26,3 +26,31 @@ $background-color_1: #267df4;
     background-color: $background-color_1;
   }
 }
+/* Dice Component in Footer */
+.dice-footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.5s ease-in-out;
+  
+  app-dice {
+    // transform: scale(0.8); // Scale down the dice component to fit better
+    width: 100%;
+  }
+  
+  canvas.dice-box-canvas {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

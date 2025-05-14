@@ -1,2 +1,42 @@
-<landing greeting="Dark, Rich, Earthy" message="Sorry the coffee/page is still steeping check back later." noticeButton="Boil the Kettle" imageId="/assets/images/landings/river.jpg"/>
+<landing greeting="Dark, Rich, Earthy" message="17:1 ratio, 3:30min brew time, 92C temp, pour over." noticeButton="Boil the Kettle" imageId="/assets/images/landings/river.jpg"/>
+
+<section class="roaster-equipment">
+  <div class="container">
+    <h2 class="section-title text-center">Roasting Equipment</h2>
+    <div class="row">
+      <div *ngFor="let item of equipment" class="col-md-4 mb-4">
+        <div class="equipment-card">
+          <img [src]="item.image" class="img-fluid rounded" alt="{{ item.name }}">
+          <div class="equipment-details">
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.description }}</p>
+            <a *ngIf="item.link" [href]="item.link" target="_blank" rel="noopener" class="equipment-link">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="roast-history">
+  <div class="container">
+    <h2 class="section-title text-center">Roast History</h2>
+    <div class="row">
+      <div *ngFor="let roast of roastHistory" class="col-md-4 mb-4">
+        <div class="roast-card">
+          <img [src]="roast.image" class="img-fluid rounded" alt="{{ roast.beanOrigin }}">
+          <div class="roast-details">
+            <h3>{{ roast.beanOrigin }}</h3>
+            <p>
+              <strong>Date:</strong> {{ roast.date }}<br>
+              <strong>Roast Level:</strong> {{ roast.roastLevel }}<br>
+              <strong>Tasting Notes:</strong> {{ roast.taste }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footerComp/>
