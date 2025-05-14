@@ -1,0 +1,25 @@
+<div class="slideshow-wrapper" *ngIf="images.length > 1; else singleImage">
+  <div class="slideshow-image-container">
+    <img [src]="images[currentIndex]" [alt]="alt" class="slideshow-image" [class.fading]="isFading" [class.portrait]="isPortrait" (click)="openModal(currentIndex)" style="cursor: pointer;" />
+  </div>
+  <div class="slideshow-controls">
+    <button (click)="prevImage()">&#8592;</button>
+    <span>{{currentIndex + 1}} / {{images.length}}</span>
+    <button (click)="nextImage()">&#8594;</button>
+    <button (click)="togglePause()" class="pause-btn">{{ paused ? '▶' : '⏸' }}</button>
+  </div>
+</div>
+<ng-template #singleImage>
+  <img [src]="images[0]" [alt]="alt" class="slideshow-image" *ngIf="images.length" (click)="openModal(0)" style="cursor: pointer;" />
+</ng-template>
+
+<!-- Modal Overlay -->
+<div class="slideshow-modal-overlay" *ngIf="modalOpen" (click)="closeModal()">
+  <div class="slideshow-modal" (click)="$event.stopPropagation()">
+    <button class="modal-close" (click)="closeModal()" aria-label="Close">&times;</button>
+    <button class="modal-nav left" (click)="modalPrev()" aria-label="Previous">&#8592;</button>
+    <img [src]="images[modalIndex]" [alt]="alt" class="modal-image" [class.portrait]="isModalPortrait" />
+    <button class="modal-nav right" (click)="modalNext()" aria-label="Next">&#8594;</button>
+    <div class="modal-counter">{{modalIndex + 1}} / {{images.length}}</div>
+  </div>
+</div>

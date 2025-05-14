@@ -1,2 +1,8 @@
-<landing greeting="Roll for Hit" message="Sorry the roll/page is a crit fail check back later." noticeButton="Dice Jail" imageId="/assets/images/landings/banff_clouds.jpg"/>
+<landing greeting="Let the Adventure Begin" message="Sorry the roll/page is a crit fail check back later." noticeButton="Roll for Initiative" (noticeButtonClick)="toggleDiceContainer()" imageId="/assets/images/landings/banff_clouds.jpg"/>
+<div *ngIf="isDiceContainerVisible" class="dice-footer-container">
+  <app-dice 
+    (rollComplete)="onDiceRollComplete($event)"
+    #diceComponent
+  ></app-dice>
+</div>
 <footerComp/>

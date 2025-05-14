@@ -1,0 +1,21 @@
+<div class="project-list-container">
+
+  <div class="project-list">
+    <article *ngFor="let project of projects; let i = index" class="project-entry-article">
+      <div class="project-entry" [ngClass]="{'reverse': i % 2 === 1}">
+        <div class="project-image">
+          <project-image-slideshow [images]="project.images" [alt]="project.title"></project-image-slideshow>
+        </div>
+        <div class="project-info">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.description }}</p>
+          <div *ngIf="project.details?.length" class="ingredient-section project-details-section">
+            <ul>
+              <li *ngFor="let item of project.details">{{ item }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
