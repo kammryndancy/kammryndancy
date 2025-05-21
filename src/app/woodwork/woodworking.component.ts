@@ -19,6 +19,18 @@ export class WoodworkingComponent {
   projects: ProjectEntry[] = [
     {
       images: [
+        'assets/images/woodwork/coffee_tray_main.jpg',
+        'assets/images/woodwork/coffee_tray_spline.jpg',
+        'assets/images/woodwork/coffee_tray_overhead.jpg',
+        'assets/images/woodwork/coffee_tray_fans.jpg',
+        'assets/images/woodwork/coffee_tray_bottom.jpg',
+        'assets/images/woodwork/coffee_tray_bottom_angle.jpg'
+      ],
+      title: 'Coffee Bean Cooling Tray',
+      description: 'A coffee tray made to assist in the rapid cooling of coffee beans after roasting. The tray is made of simple pine with mitred corners and walnut splines. Two fans are mounted to the bottom of the tray to rapidly cool the beans. The bottom mount is laser cut to allow intake air flow to the internal fans.'
+    },
+    {
+      images: [
         'assets/images/woodwork/d20_flower_mat.jpg',
         'assets/images/woodwork/d20_flower_projection.jpg',
         'assets/images/woodwork/d20_dragon_1.jpg',

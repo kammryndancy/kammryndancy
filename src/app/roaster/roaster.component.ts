@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 import { FooterComponent } from "../components/footer/footer.component";
 import { LandingComponent } from "../components/landing/landing.component";
@@ -17,6 +18,7 @@ interface RoastHistory {
   roastLevel: string;
   image: string;
   taste: string;
+  youtubeUrl?: string;
 }
 
 @Component({
@@ -27,7 +29,8 @@ interface RoastHistory {
     LandingComponent,
     FooterComponent,
     NgFor,
-    NgIf
+    NgIf,
+    SafeUrlPipe
   ],
   standalone: true
 })
@@ -42,11 +45,11 @@ export class RoasterComponent {
     {
       name: 'Metal Cooling Tray',
       description: 'Simple barbeque vegetable roaster used as a cooling tray with integrated fan system to rapidly halt the roasting process and preserve bean flavor.',
-      image: '/assets/images/coffee/coffee_tray.jpg'
+      image: '/assets/images/woodwork/coffee_tray_main.jpg'
     },
     {
       name: 'Natural Gas Stove',
-      description: 'A simple natural gas stove used to heat up the roasters steel mesh plate in order to emit infrared heat towards the coffee beans.',
+      description: 'A simple butane camping stove that has a single burner that produces 7,650 BTUs of heat. The stove heats up the roaster\'s steel mesh plate in order to emit infrared heat towards the coffee beans.',
       image: '/assets/images/coffee/coffee_chip_out.jpg'
     }
   ];
@@ -67,11 +70,24 @@ export class RoasterComponent {
       taste: 'Citrus, Floral, Nutty, Molasses'
     },
     {
-      date: '2024-05-10',
+      date: '2025-05-18',
       beanOrigin: 'Brazilian Anaerobic Honey',
-      roastLevel: 'First Crack+',
+      roastLevel: 'First Crack',
       image: '/assets/images/coffee/brazilian_honey.jpg',
-      taste: 'Citrus, Floral, Oranges, Tannic'
+      taste: 'Brown Sugar, Molasses, Hazelnut, Marmalade',
+      youtubeUrl: 'https://youtu.be/TgdPxuEk_Qg'
     }
   ];
+
+  getYoutubeEmbedUrl(youtubeUrl?: string): string | null {
+    if (!youtubeUrl) return null;
+    if (youtubeUrl.includes('youtube.com/embed/')) return youtubeUrl;
+    const match = youtubeUrl.match(/[?&]v=([\w-]{11})/) || youtubeUrl.match(/youtu\.be\/([\w-]{11})/);
+    const videoId = match ? match[1] : null;
+    if (videoId) {
+      return `https://www.youtube.com/embed/${videoId}`;
+    }
+    return youtubeUrl;
+  }
 }
+
