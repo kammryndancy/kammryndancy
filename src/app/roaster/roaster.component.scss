@@ -25,6 +25,7 @@ $background-color: #f4f4f4;
   }
 
   .equipment-card, .roast-card {
+    padding-bottom: 2rem;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -71,4 +72,8 @@ $background-color: #f4f4f4;
     margin: 0 auto;
     background-color: $background-color;
   }
+}
+
+.mb4 { 
+  padding-bottom: 20px;
 }
