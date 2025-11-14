@@ -1,0 +1,34 @@
+<div class="lsv">
+  <div class="lsv__controls">
+    <label class="lsv__field">
+      <span>Stripes</span>
+      <select [value]="stripeCount()" (change)="onStripeCountChange($any($event.target).value)">
+        <option [value]="3">3</option>
+        <option [value]="4">4</option>
+        <option [value]="5">5</option>
+      </select>
+    </label>
+    <ng-container *ngFor="let c of colors(); let i = index">
+      <label class="lsv__field">
+        <span>Color {{ i + 1 }}</span>
+        <input type="color" [value]="c" (input)="onColorChange(i, $any($event.target).value)" />
+      </label>
+    </ng-container>
+  </div>
+
+  <div class="lsv__stage">
+    <svg [attr.viewBox]="viewBox" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lone Star preview">
+      <rect x="0" y="0" [attr.width]="size" [attr.height]="size" fill="#f9f9f9" />
+      <!-- Render lonestar as many small 45/135 rhombus tiles -->
+      <ng-container *ngFor="let tile of tiles(); let idx = index">
+        <polygon
+          [attr.points]="tile.points"
+          [attr.fill]="tile.color"
+          stroke="#ffffff"
+          stroke-width="0"
+          stroke-linejoin="round"
+        />
+      </ng-container>
+    </svg>
+  </div>
+</div>

@@ -54,6 +54,10 @@ export const routes: Routes = [
     path: 'scavenger-hunt',
     loadComponent: () => import('./scavenger-hunt/scavenger-hunt.component').then(m => m.ScavengerHuntComponent)
   },
+  {
+    path: 'lonestar',
+    loadComponent: () => import('./lone-star/lone-star.component').then(m => m.LoneStarComponent)
+  },
   { 
     path: '', 
     redirectTo: '/home', 
