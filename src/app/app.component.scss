@@ -47,6 +47,22 @@
           color: $primary-light;
         }
       }
+      > button.nav-link {
+        padding: 0;
+        font-size: 16px;
+        color: $white;
+        line-height: 26px;
+        background: transparent;
+        border: 0;
+        outline: none;
+        
+        i { margin-left: 5px; }
+        &:hover, &:focus {
+          background: transparent;
+          color: $primary-light;
+          cursor: pointer;
+        }
+      }
       + li { margin-left: 30px; }
       &.active > a {
         background: transparent;
@@ -82,6 +98,28 @@
           color: $primary-light;
           left: 15px;
         }
+      }
+    }
+    
+    // Make dropdowns work in the collapsed (hamburger) menu
+    @media (max-width: 768px) {
+      > li {
+        width: 100%;
+      }
+      .dropdown-menu {
+        position: static; // stack within flow under the toggle
+        float: none;
+        width: 100%;
+        margin: 0;
+        top: auto;
+        border-top-width: 3px;
+        box-shadow: none;
+      }
+      .dropdown.open > .dropdown-menu,
+      .dropdown > .dropdown-menu.show {
+        display: block;
+        opacity: 1;
+        visibility: visible;
       }
     }
   }

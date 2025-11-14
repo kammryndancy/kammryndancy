@@ -1,0 +1,87 @@
+<div class="lsv">
+  <div class="lsv__controls">
+    <div class="lsv__topControls">
+      <label class="lsv__field">
+      <span>Mode</span>
+      <select [value]="mode()" (change)="onModeChange($any($event.target).value)">
+        <option value="stripe">Stripe pattern</option>
+        <option value="columns">Per-column</option>
+      </select>
+      </label>
+      <label class="lsv__field">
+      <span>Stripes</span>
+      <select [value]="stripeCount()" (change)="onStripeCountChange($any($event.target).value)">
+        <option [value]="3">3</option>
+        <option [value]="4">4</option>
+        <option [value]="5">5</option>
+      </select>
+      </label>
+      <label class="lsv__field">
+        <span>Background</span>
+      <input type="color" [value]="backgroundFill()" (input)="onBackgroundChange($any($event.target).value)" />
+    </label>
+    </div>
+
+    <div class="lsv__colors">
+    <!-- Stripe mode: simple color list -->
+    <ng-container *ngIf="mode() === 'stripe'; else columnMode">
+      <ng-container *ngFor="let c of colors(); let i = index">
+        <label class="lsv__field">
+          <span>Color {{ i + 1 }}</span>
+          <input type="color" [value]="c" (input)="onColorChange(i, $any($event.target).value)" />
+        </label>
+      </ng-container>
+    </ng-container>
+
+    <!-- Column mode controls -->
+    <ng-template #columnMode>
+      <div class="lsv__columns">
+        <div class="lsv__col" *ngFor="let col of indices(); let ci = index">
+          <div class="lsv__colTitle">Stripe {{ ci + 1 }}</div>
+          <div class="lsv__colInputs">
+            <label class="lsv__field" *ngFor="let di of reversedIndices(); let idx = index">
+              <span>{{ di + 1 }}</span>
+              <input type="color"
+                     [value]="columnColors()[ci][di]"
+                     (input)="onColumnColorChange(ci, di + 1, $any($event.target).value)" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    </div>
+  </div>
+
+  <div class="lsv__stage">
+    <svg [attr.viewBox]="viewBox" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lone Star preview">
+      <rect x="0" y="0" [attr.width]="size" [attr.height]="size" [attr.fill]="backgroundFill()" />
+      <!-- Render lonestar as many small 45/135 rhombus tiles -->
+      <ng-container *ngFor="let tile of tiles(); let idx = index">
+        <polygon
+          [attr.points]="tile.points"
+          [attr.fill]="tile.color"
+          stroke="#ffffff"
+          stroke-width="0"
+          stroke-linejoin="round"
+        />
+      </ng-container>
+    </svg>
+  </div>
+
+  <!-- Legend: replicate each stripe/column with swatches in reverse order -->
+  <div class="lsv__legend">
+    <div class="lsv__legendCols">
+      <div class="lsv__legendCol" *ngFor="let ci of indices()">
+        <div class="lsv__legendTitle">Stripe {{ ci + 1 }}</div>
+        <div class="lsv__legendStack" *ngIf="mode() === 'columns'; else stripeLegendTpl">
+          <div class="lsv__swatch" *ngFor="let di of reversedIndices()" [style.background]="columnColors()[ci][di]"></div>
+        </div>
+        <ng-template #stripeLegendTpl>
+          <div class="lsv__legendInline">
+            <span class="lsv__legendChip" *ngFor="let color of stripeLegend()[ci]; let li = index" [style.background]="color"></span>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

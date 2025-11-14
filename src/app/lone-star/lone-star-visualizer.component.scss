@@ -1,0 +1,91 @@
+.lsv { display: grid; gap: 16px; justify-items: center; }
+.lsv__controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; }
+.lsv__topControls {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 4px;
+  justify-content: center;
+}
+.lsv__colors {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.lsv__field { display: inline-flex; align-items: center; gap: 8px; }
+.lsv__stage { width: 100%; max-width: 640px; aspect-ratio: 1 / 1; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; background: #fff; }
+svg { width: 100%; height: 100%; display: block; }
+
+/* Per-column controls */
+.lsv__columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.lsv__col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+.lsv__colTitle {
+  font-weight: 600;
+  text-align: center;
+}
+.lsv__colInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Legend under star */
+.lsv__legend {
+  margin-top: 12px;
+}
+.lsv__legendCols {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: center;
+}
+.lsv__legendCol {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.lsv__legendTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+.lsv__legendStack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.lsv__swatch {
+  width: 80px;
+  height: 14px;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 3px;
+}
+
+/* Stripe legend (inline chips) */
+.lsv__legendInline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.lsv__legendChip {
+  display: block;
+  width: 80px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,0.15);
+}
