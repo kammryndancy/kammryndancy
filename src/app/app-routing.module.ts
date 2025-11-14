@@ -55,7 +55,7 @@ export const routes: Routes = [
     loadComponent: () => import('./scavenger-hunt/scavenger-hunt.component').then(m => m.ScavengerHuntComponent)
   },
   {
-    path: 'lonestar',
+    path: 'quilt',
     loadComponent: () => import('./lone-star/lone-star.component').then(m => m.LoneStarComponent)
   },
   { 

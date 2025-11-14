@@ -21,18 +21,35 @@
           <li routerLink="/roaster" routerLinkActive="active">
             <a class="nav-link" routerLink="/roaster" routerLinkActive="active" ariaCurrentWhenActive="page">Roastery</a>
           </li>
-          <li class="dropdown" routerLink="/dnd" routerLinkActive="active">
-            <a class="dropdown-toggle" data-toggle="dropdown" routerLink="/dnd" routerLinkActive="active" ariaCurrentWhenActive="page">DnD Campaigns<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i></a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-              <li routerLink="/withaerstice" routerLinkActive="active"><a routerLink="/withaerstice" routerLinkActive="active">Withaerstice</a></li>
-              <li routerLink="/blacksheep" routerLinkActive="active"><a routerLink="/blacksheep" routerLinkActive="active">Black Sheep</a></li>
+          <li class="dropdown" routerLinkActive="active" [class.open]="dndOpen">
+            <button class="dropdown-toggle nav-link" type="button" (click)="dndOpen = !dndOpen" aria-haspopup="true" [attr.aria-expanded]="dndOpen" [class.active]="dndActive">
+              DnD Campaigns<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i>
+            </button>
+            <ul
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="menu1"
+              [class.show]="dndOpen"
+              [style.top]="dndOpen ? '100%' : '140%'"
+            >
+              <li routerLink="/withaerstice" routerLinkActive="active"><a routerLink="/withaerstice" routerLinkActive="active" (click)="dndOpen=false">Withaerstice</a></li>
+              <li routerLink="/blacksheep" routerLinkActive="active"><a routerLink="/blacksheep" routerLinkActive="active" (click)="dndOpen=false">Black Sheep</a></li>
             </ul>
           </li>
-          <li routerLink="/scavenger-hunt" routerLinkActive="active">
-            <a class="nav-link" routerLink="/scavenger-hunt" routerLinkActive="active" ariaCurrentWhenActive="page">Scavenger Hunt</a>
-          </li>
-          <li routerLink="/lonestar" routerLinkActive="active">
-            <a class="nav-link" routerLink="/lonestar" routerLinkActive="active" ariaCurrentWhenActive="page">Lone Star</a>
+          <li class="dropdown" routerLinkActive="active" [class.open]="toolsOpen">
+            <button class="dropdown-toggle nav-link" type="button" (click)="toolsOpen = !toolsOpen" aria-haspopup="true" [attr.aria-expanded]="toolsOpen" [class.active]="toolsActive">
+              Tools<i class="fa fa-caret-down hidden-xs" aria-hidden="true"></i>
+            </button>
+            <ul
+              class="dropdown-menu"
+              role="menu"
+              aria-labelledby="menu1"
+              [class.show]="toolsOpen"
+              [style.top]="toolsOpen ? '100%' : '140%'"
+            >
+              <li routerLink="/scavenger-hunt" routerLinkActive="active"><a routerLink="/scavenger-hunt" routerLinkActive="active" (click)="toolsOpen=false">Scavenger Hunt</a></li>
+              <li routerLink="/quilt" routerLinkActive="active"><a routerLink="/quilt" routerLinkActive="active" (click)="toolsOpen=false">Quilting</a></li>
+            </ul>
           </li>
         </ul>
       </div>
