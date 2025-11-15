@@ -64,9 +64,19 @@ $border-color_4: #007bb5;
     }
     a {
       margin-left: 40px;
+      display: inline-block;
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
     p {
       margin-left: 40px;
+      display: inline-block;
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
   }
 }

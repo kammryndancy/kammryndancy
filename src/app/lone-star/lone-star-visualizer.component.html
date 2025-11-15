@@ -27,7 +27,7 @@
     <ng-container *ngIf="mode() === 'stripe'; else columnMode">
       <ng-container *ngFor="let c of colors(); let i = index">
         <label class="lsv__field">
-          <span>Color {{ i + 1 }}</span>
+          <span>{{ i + 1 }}</span>
           <input type="color" [value]="c" (input)="onColorChange(i, $any($event.target).value)" />
         </label>
       </ng-container>
