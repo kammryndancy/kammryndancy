@@ -78,8 +78,8 @@ export class ScavengerHuntComponent implements OnInit {
       },
       winter: {
         morning: '/assets/images/landings/seasonal/winter-morning-road-forest.jpg',
-        afternoon: '/assets/images/landings/seasonal/winter-solitary-forest.jpg',
-        evening: '/assets/images/landings/seasonal/fall-morning-road-forest.jpg',
+        afternoon: '/assets/images/landings/seasonal/winter-solitary-morning-forest.jpg',
+        evening: '/assets/images/landings/seasonal/winter-solitary-morning-forest.jpg',
         night: '/assets/images/landings/seasonal/winter-morning-road-forest.jpg'
       }
     };
